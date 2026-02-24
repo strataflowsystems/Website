@@ -1,0 +1,5 @@
+<svg width="120" height="32" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="30" height="30" rx="6" stroke="#0F172A" stroke-width="2" fill="#E2E8F0" />
+  <path d="M9 21L16 11L23 21" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="40" y="21" fill="#0F172A" font-size="10" font-family="Inter, Arial, sans-serif" letter-spacing="1.5">YOUR LOGO</text>
+</svg>
