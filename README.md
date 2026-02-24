@@ -23,7 +23,7 @@ npm run preview
 3. Configure build:
    - **Build command:** `npm run build`
    - **Build output directory:** `dist`
-   - If `wrangler.toml` is detected in your Pages build logs, ensure it includes `[build] command = "npm run build"` so Cloudflare does not skip the build step.
+   - If `wrangler.toml` is detected in your Pages build logs, keep it Pages-compatible (do **not** add a `[build]` block; Pages rejects it).
 4. Set **Node version: `20`** in Cloudflare Pages environment settings (or commit `.nvmrc` with `20`).
 5. Ensure SPA fallback routing is enabled using `public/_redirects` with `/* /index.html 200`.
 6. Deploy.
@@ -34,7 +34,7 @@ npm run preview
 If your deployed site shows a 404, verify these settings first:
 
 1. **Framework preset:** `Vite` (or `None` if manually setting commands).
-2. **Build command:** `npm run build` (in Pages dashboard and/or `wrangler.toml` `[build]` block)
+2. **Build command:** `npm run build` (set in Cloudflare Pages dashboard)
 3. **Build output directory:** `dist`
 4. **Node version:** use an LTS runtime (18+).
 5. Ensure `public/_redirects` is present with:
@@ -46,7 +46,7 @@ If your deployed site shows a 404, verify these settings first:
 6. Re-deploy after changing build settings (Pages does not always retro-apply to prior artifacts).
 
 This repo also includes:
-- `wrangler.toml` with `pages_build_output_dir = "dist"` and `[build] command = "npm install --no-fund --no-audit && npm run build"`
+- `wrangler.toml` with `pages_build_output_dir = "dist"` (Pages-compatible schema)
 - `public/404.html` fallback redirect guard
 
 ## SEO assets
