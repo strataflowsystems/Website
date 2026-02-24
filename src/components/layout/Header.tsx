@@ -1,6 +1,7 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import logo from '@/assets/logo.svg';
 import { site } from '@/content/site';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/cn';
@@ -11,8 +12,8 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-slate-50/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <NavLink to="/" className="text-sm font-semibold tracking-[0.12em] text-slate-950">
-          STRATAFLOW SYSTEMS
+        <NavLink to="/" className="flex items-center" aria-label="Go to homepage">
+          <img src={logo} alt="Strataflow Systems" className="h-auto w-auto max-h-10 max-w-[220px] object-contain" />
         </NavLink>
 
         <button
