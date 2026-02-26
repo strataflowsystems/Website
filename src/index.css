@@ -7,14 +7,23 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
 }
 
 body {
-  @apply bg-slate-50 text-slate-900;
+  @apply bg-slate-50 text-slate-900 dark:bg-[#0f1115] dark:text-slate-100;
 }
 
 .pattern-bg {
   background-size: 26px 26px;
+}
+
+.dark .pattern-bg {
+  background-image: radial-gradient(circle at 1px 1px, rgba(130, 145, 170, 0.15) 1px, transparent 0);
 }
 
 @media (prefers-reduced-motion: reduce) {

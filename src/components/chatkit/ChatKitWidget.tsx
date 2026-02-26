@@ -26,10 +26,11 @@ export const ChatKitWidget = () => {
     api: {
       getClientSecret,
     },
+    theme: 'dark',
     onError: (event) => {
       console.error('Unable to mount ChatKit widget.', event);
     },
   });
 
-  return <ChatKit control={chatKit.control} className="block min-h-96 rounded-xl border border-slate-200 bg-white p-4 shadow-card" />;
+  return <ChatKit control={chatKit.control} className="block min-h-96 rounded-xl border border-slate-800 bg-[#1a1d23] p-4 shadow-card" />;
 };
