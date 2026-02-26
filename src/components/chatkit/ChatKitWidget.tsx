@@ -26,7 +26,7 @@ export const ChatKitWidget = () => {
     api: {
       getClientSecret,
     },
-    onError: (event: unknown) => {
+    onError: (event) => {
       console.error('Unable to mount ChatKit widget.', event);
     },
   });

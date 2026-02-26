@@ -3,25 +3,12 @@ import { ChatKit, useChatKit } from "@openai/chatkit-react";
 export function ChatWidget() {
   const { control } = useChatKit({
     api: {
-      async getClientSecret(_existing: string | null) {
+      async getClientSecret(existing) {
+        // If you want: return existing if still valid; ChatKit will call again on expiry
         const res = await fetch("/api/chatkit/session", { method: "POST" });
-        const payload = (await res.json()) as { client_secret?: string; error?: unknown };
-
-        if (!res.ok) {
-          throw new Error(`Unable to create ChatKit session (${res.status}): ${JSON.stringify(payload.error ?? payload)}`);
-        }
-
-        const { client_secret } = payload;
-
-        if (!client_secret || typeof client_secret !== "string") {
-          throw new Error("ChatKit session response did not include a valid client_secret.");
-        }
-
+        const { client_secret } = await res.json();
         return client_secret;
       },
-    },
-    onError: (event: unknown) => {
-      console.error("Unable to mount ChatKit widget.", event);
     },
   });
 
