@@ -5,7 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { ChatWidget } from '@/components/ChatWidget';
 
 export const PageLayout = ({ children }: { children: ReactNode }) => (
-  <div className="min-h-screen bg-slate-50 pattern-bg bg-grid">
+  <div className="min-h-screen bg-slate-50 pattern-bg bg-grid" data-build-signature="2026-02-26-a">
     <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2">
       Skip to content
     </a>
