@@ -1,4 +1,6 @@
 import { ChatKit, useChatKit } from '@openai/chatkit-react';
+import { useTheme } from '@/hooks/useTheme';
+import { cn } from '@/lib/cn';
 
 const getClientSecret = async (_currentClientSecret: string | null): Promise<string> => {
   const response = await fetch('/api/chatkit/session', {
@@ -22,14 +24,24 @@ const getClientSecret = async (_currentClientSecret: string | null): Promise<str
 };
 
 export const ChatKitWidget = () => {
+  const { theme } = useTheme();
   const chatKit = useChatKit({
     api: {
       getClientSecret,
     },
+    theme,
     onError: (event) => {
       console.error('Unable to mount ChatKit widget.', event);
     },
   });
 
-  return <ChatKit control={chatKit.control} className="block min-h-96 rounded-xl border border-slate-200 bg-white p-4 shadow-card" />;
+  return (
+    <ChatKit
+      control={chatKit.control}
+      className={cn(
+        'block min-h-96 rounded-xl p-4 shadow-card',
+        theme === 'dark' ? 'border border-slate-800 bg-[#1a1d23]' : 'border border-slate-200 bg-white',
+      )}
+    />
+  );
 };
