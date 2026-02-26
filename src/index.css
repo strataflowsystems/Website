@@ -26,6 +26,15 @@ body {
   background-image: radial-gradient(circle at 1px 1px, rgba(130, 145, 170, 0.15) 1px, transparent 0);
 }
 
+
+html,
+body,
+body * {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 420ms;
+  transition-timing-function: ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
