@@ -97,3 +97,32 @@ This repo also includes:
 - `src/components/ui`: reusable primitive UI components.
 - `src/components/sections`: reusable page sections.
 - `src/components/layout`: shell components (header/footer/banner).
+
+## OpenAI ChatKit integration (Cloudflare Pages)
+
+This project uses a Cloudflare Pages Function to create a short-lived ChatKit session and return an ephemeral `client_secret` to the browser.
+
+### Required Cloudflare Pages environment variables
+
+Set these variables in **Pages > Settings > Environment variables** (for Preview and Production):
+
+- `OPENAI_API_KEY`: your server-side OpenAI API key
+- `OPENAI_WORKFLOW_ID`: ChatKit workflow id used for session creation
+
+### Security note
+
+The OpenAI API key is intentionally used only inside the Pages Function (`/functions/api/chatkit/session.ts`) and is never shipped to client-side JavaScript. The frontend requests only an ephemeral `client_secret` from `/api/chatkit/session`, which limits exposure and follows least-privilege best practices.
+
+### Local and preview testing
+
+1. Run local dev with Pages Functions support:
+
+   ```bash
+   npx wrangler pages dev dist --compatibility-date=2024-12-01
+   ```
+
+   (or your standard Cloudflare Pages local workflow)
+
+2. Ensure both env vars are set for the local session.
+3. Open the homepage and verify the ChatKit widget mounts in the `#chatkit` container.
+4. In preview deployments, configure the same env vars in the Preview environment and test `/api/chatkit/session` plus homepage widget rendering.
