@@ -1,11 +1,23 @@
+import { useEffect, useState } from 'react';
 import { ChatKit, useChatKit } from '@openai/chatkit-react';
 import { useState } from 'react';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
 
+const DESKTOP_MEDIA_QUERY = '(min-width: 768px)';
+
+const getDefaultMinimizedState = () => {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  return !window.matchMedia(DESKTOP_MEDIA_QUERY).matches;
+};
+
 export function ChatWidget() {
   const { theme } = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(getDefaultMinimizedState);
+
   const { control } = useChatKit({
     api: {
       async getClientSecret(_existing) {
@@ -17,42 +29,50 @@ export function ChatWidget() {
     theme,
   });
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
+    const handleMediaQueryChange = () => {
+      setIsMinimized(!mediaQuery.matches);
+    };
+
+    handleMediaQueryChange();
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+    };
+  }, []);
+
   return (
-    <div className="fixed bottom-4 right-4 z-50">
-      {isOpen && (
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2">
+      <button
+        type="button"
+        aria-expanded={!isMinimized}
+        aria-controls="chat-widget-panel"
+        onClick={() => setIsMinimized((prev) => !prev)}
+        className={cn(
+          'inline-flex h-12 items-center rounded-full px-4 text-sm font-semibold shadow-xl transition',
+          theme === 'dark'
+            ? 'border border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800'
+            : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-100',
+        )}
+        aria-expanded={isOpen}
+        aria-controls="stratabot-chat-panel"
+      >
+        {isMinimized ? 'Open AI chat' : 'Minimize AI chat'}
+      </button>
+
+      {!isMinimized ? (
         <div
-          id="stratabot-chat-panel"
+          id="chat-widget-panel"
           className={cn(
-            'mb-3 h-[560px] w-[360px] overflow-hidden rounded-2xl shadow-xl',
+            'h-[560px] w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-2xl shadow-xl',
             theme === 'dark' ? 'border border-slate-800 bg-[#1a1d23]' : 'border border-slate-200 bg-white',
           )}
         >
           <ChatKit control={control} className="h-full w-full" />
         </div>
-      )}
-
-      <button
-        type="button"
-        onClick={() => setIsOpen((current) => !current)}
-        className={cn(
-          'inline-flex items-center gap-3 rounded-full px-4 py-3 text-sm font-semibold shadow-xl transition hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-          theme === 'dark'
-            ? 'border border-slate-700 bg-slate-900 text-slate-100 focus-visible:ring-slate-300 focus-visible:ring-offset-slate-950'
-            : 'border border-slate-200 bg-white text-slate-900 focus-visible:ring-slate-900 focus-visible:ring-offset-slate-50',
-        )}
-        aria-expanded={isOpen}
-        aria-controls="stratabot-chat-panel"
-      >
-        <img
-          src="/Stratabot%20Full.PNG"
-          alt="Stratabot"
-          className="h-8 w-8 rounded-full object-cover"
-          loading="lazy"
-          width={32}
-          height={32}
-        />
-        <span>Talk to Stratabot.</span>
-      </button>
+      ) : null}
     </div>
   );
 }
