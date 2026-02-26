@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { AnnouncementBanner } from '@/components/layout/AnnouncementBanner';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { ChatWidget } from '@/components/ChatWidget';
 
 export const PageLayout = ({ children }: { children: ReactNode }) => (
   <div className="min-h-screen bg-slate-50 pattern-bg bg-grid">
@@ -11,6 +12,7 @@ export const PageLayout = ({ children }: { children: ReactNode }) => (
     <AnnouncementBanner />
     <Header />
     <main id="main-content">{children}</main>
+    <ChatWidget />
     <Footer />
   </div>
 );

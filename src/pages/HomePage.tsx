@@ -1,5 +1,4 @@
 import { CheckCircle2 } from 'lucide-react';
-import { ChatKitWidget } from '@/components/chatkit/ChatKitWidget';
 import { FinalCtaBand } from '@/components/sections/FinalCtaBand';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { Reveal } from '@/components/ui/Reveal';
@@ -82,8 +81,8 @@ export const HomePage = () => (
       </ul>
     </Section>
 
-    <Section title="Chat with our team" intro="Ask questions and get quick guidance via our assistant.">
-      <ChatKitWidget />
+    <Section title="Chat with our team" intro="Use the chat bubble in the bottom-right corner to ask questions and get quick guidance via our assistant.">
+      <p className="text-slate-600">The assistant is available on every page via the floating widget.</p>
     </Section>
 
     <Section title="FAQ">
