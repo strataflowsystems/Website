@@ -2,7 +2,6 @@ import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import logo from '@/assets/logo.svg';
-import logoDark from '@/assets/logo-dark.svg';
 import { Button } from '@/components/ui/Button';
 import { site } from '@/content/site';
 import { useTheme } from '@/hooks/useTheme';
@@ -16,7 +15,7 @@ export const Header = () => {
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-slate-50/95 backdrop-blur dark:border-slate-800 dark:bg-[#0f1115]/95">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <NavLink to="/" className="flex items-center" aria-label="Go to homepage">
-          <img src={theme === 'dark' ? logoDark : logo} alt="Strataflow Systems" className="h-auto w-auto max-h-10 max-w-[220px] object-contain" />
+          <img src={logo} alt="Strataflow Systems" className="h-auto w-auto max-h-10 max-w-[220px] object-contain transition duration-500 dark:brightness-0 dark:invert" />
         </NavLink>
 
         <button
