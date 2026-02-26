@@ -1,54 +1,40 @@
-interface Env {
+export const onRequestPost: PagesFunction<{
   OPENAI_API_KEY: string;
-  OPENAI_WORKFLOW_ID: string;
-}
+  OPENAI_CHATKIT_WORKFLOW_ID: string;
+}> = async ({ env, request }) => {
+  // Simple per-visitor ID (cookie) so ChatKit can associate sessions to a "user"
+  const cookie = request.headers.get('Cookie') || '';
+  let deviceId = cookie.match(/ck_device=([^;]+)/)?.[1];
 
-interface ChatKitSessionResponse {
-  client_secret?: string;
-  expires_at?: string;
-}
+  if (!deviceId) deviceId = crypto.randomUUID();
 
-export const onRequestPost: PagesFunction<Env> = async ({ env }) => {
-  if (!env.OPENAI_API_KEY || !env.OPENAI_WORKFLOW_ID) {
-    return new Response(
-      JSON.stringify({ error: 'Missing OPENAI_API_KEY or OPENAI_WORKFLOW_ID environment variables.' }),
-      {
-        status: 500,
-        headers: { 'content-type': 'application/json' },
-      },
-    );
-  }
-
-  const upstreamResponse = await fetch('https://api.openai.com/v1/chatkit/sessions', {
+  const res = await fetch('https://api.openai.com/v1/chatkit/sessions', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${env.OPENAI_API_KEY}`,
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${env.OPENAI_API_KEY}`,
+      'OpenAI-Beta': 'chatkit_beta=v1',
     },
     body: JSON.stringify({
-      workflow_id: env.OPENAI_WORKFLOW_ID,
+      workflow: { id: env.OPENAI_CHATKIT_WORKFLOW_ID },
+      user: deviceId,
     }),
   });
 
-  if (!upstreamResponse.ok) {
-    const errorBody = await upstreamResponse.text();
+  const json = await res.json();
 
-    return new Response(errorBody, {
-      status: upstreamResponse.status,
-      headers: { 'content-type': 'text/plain; charset=utf-8' },
+  if (!res.ok) {
+    return new Response(JSON.stringify({ error: json }), {
+      status: res.status,
+      headers: { 'Content-Type': 'application/json' },
     });
   }
 
-  const payload = (await upstreamResponse.json()) as ChatKitSessionResponse;
+  const headers = new Headers({ 'Content-Type': 'application/json' });
+  headers.append('Set-Cookie', `ck_device=${deviceId}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=31536000`);
 
-  return new Response(
-    JSON.stringify({
-      client_secret: payload.client_secret,
-      expires_at: payload.expires_at,
-    }),
-    {
-      status: 200,
-      headers: { 'content-type': 'application/json' },
-    },
-  );
+  return new Response(JSON.stringify({ client_secret: json.client_secret }), {
+    status: 200,
+    headers,
+  });
 };
