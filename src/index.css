@@ -31,7 +31,7 @@ html,
 body,
 body * {
   transition-property: background-color, border-color, color, fill, stroke, box-shadow;
-  transition-duration: 420ms;
+  transition-duration: 1680ms;
   transition-timing-function: ease;
 }
 

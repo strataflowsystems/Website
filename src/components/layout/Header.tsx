@@ -15,7 +15,7 @@ export const Header = () => {
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-slate-50/95 backdrop-blur dark:border-slate-800 dark:bg-[#0f1115]/95">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <NavLink to="/" className="flex items-center" aria-label="Go to homepage">
-          <img src={logo} alt="Strataflow Systems" className="h-auto w-auto max-h-10 max-w-[220px] object-contain" />
+          <img src={logo} alt="Strataflow Systems" className="h-auto w-auto max-h-10 max-w-[220px] object-contain transition duration-500 dark:brightness-0 dark:invert" />
         </NavLink>
 
         <button

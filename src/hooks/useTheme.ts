@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 type Theme = 'light' | 'dark';
 
 const THEME_STORAGE_KEY = 'strataflow-theme';
+const THEME_EVENT = 'strataflow-theme-change';
+
+const isTheme = (value: string | null): value is Theme => value === 'light' || value === 'dark';
 
 const getPreferredTheme = (): Theme => {
   if (typeof window === 'undefined') {
@@ -10,7 +13,7 @@ const getPreferredTheme = (): Theme => {
   }
 
   const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-  if (savedTheme === 'light' || savedTheme === 'dark') {
+  if (isTheme(savedTheme)) {
     return savedTheme;
   }
 
@@ -23,7 +26,31 @@ export const useTheme = () => {
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark');
     window.localStorage.setItem(THEME_STORAGE_KEY, theme);
+    window.dispatchEvent(new CustomEvent<Theme>(THEME_EVENT, { detail: theme }));
   }, [theme]);
+
+  useEffect(() => {
+    const onThemeChange = (event: Event) => {
+      const customEvent = event as CustomEvent<Theme>;
+      if (customEvent.detail) {
+        setTheme(customEvent.detail);
+      }
+    };
+
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === THEME_STORAGE_KEY && isTheme(event.newValue)) {
+        setTheme(event.newValue);
+      }
+    };
+
+    window.addEventListener(THEME_EVENT, onThemeChange);
+    window.addEventListener('storage', onStorage);
+
+    return () => {
+      window.removeEventListener(THEME_EVENT, onThemeChange);
+      window.removeEventListener('storage', onStorage);
+    };
+  }, []);
 
   return {
     theme,
