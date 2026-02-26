@@ -18,7 +18,7 @@ const classes = {
 
 export const Button = ({ children, href, variant = 'primary', external, className }: ButtonProps) => {
   const base = cn(
-    'inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+    'inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 [@media(prefers-color-scheme:dark)]:focus-visible:ring-offset-slate-900',
     classes[variant],
     className,
   );
