@@ -12,7 +12,7 @@ type ButtonProps = {
 
 const classes = {
   primary: 'bg-accent-600 text-white hover:bg-accent-500 focus-visible:ring-accent-500',
-  secondary: 'bg-white text-slate-900 ring-1 ring-slate-300 hover:bg-slate-100 focus-visible:ring-accent-500',
+  secondary: 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 ring-1 ring-slate-300 hover:bg-slate-100 dark:bg-slate-800 focus-visible:ring-accent-500',
   ghost: 'text-accent-600 ring-1 ring-accent-600/25 hover:bg-accent-50 focus-visible:ring-accent-500',
 };
 
