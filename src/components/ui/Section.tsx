@@ -10,7 +10,7 @@ type SectionProps = {
 };
 
 export const Section = ({ id, title, intro, children, className }: SectionProps) => (
-  <section id={id} className={cn('py-16 md:py-24', className)}>
+  <section id={id} className={cn('py-12 md:py-16', className)}>
     <div className="mx-auto w-full max-w-6xl px-6">
       {(title || intro) && (
         <div className="mb-8 max-w-3xl">

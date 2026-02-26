@@ -4,8 +4,8 @@ import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/Reveal';
 
 export const HeroSection = () => (
-  <section className="border-b border-slate-200 dark:border-slate-800/80 py-20 md:py-28">
-    <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-[1.3fr_1fr] md:items-end">
+  <section className="border-b border-slate-200 dark:border-slate-800/80 py-14 md:py-20">
+    <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-[1.3fr_1fr] md:items-end">
       <div>
         <Reveal>
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.12em] text-accent-600">{site.motto}</p>

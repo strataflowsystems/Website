@@ -45,12 +45,20 @@ export const Header = () => {
             {site.primaryCta.label}
           </Button>
           <button
-            className="inline-flex items-center gap-2 rounded-md border border-accent-500/40 bg-accent-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-accent-600/25 ring-1 ring-accent-400/30 hover:bg-accent-500 dark:border-accent-400/40 dark:bg-accent-500 dark:hover:bg-accent-600"
+            type="button"
             onClick={toggleTheme}
+            className="relative inline-flex h-6 w-11 items-center rounded-full border border-slate-300 bg-slate-200 transition-colors hover:bg-slate-300 dark:border-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600"
             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-pressed={theme === 'dark'}
           >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            <span>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</span>
+            <span
+              className={cn(
+                'pointer-events-none inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-slate-700 shadow transition-transform dark:bg-slate-950 dark:text-slate-200',
+                theme === 'dark' ? 'translate-x-5' : 'translate-x-0.5',
+              )}
+            >
+              {theme === 'dark' ? <Sun size={12} /> : <Moon size={12} />}
+            </span>
           </button>
         </nav>
       </div>
@@ -63,15 +71,25 @@ export const Header = () => {
                 {item.label}
               </NavLink>
             ))}
-            <Button href={site.primaryCta.href}>{site.primaryCta.label}</Button>
-            <button
-              className="inline-flex items-center justify-center gap-2 rounded-md border border-accent-500/40 bg-accent-600 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-accent-600/25 ring-1 ring-accent-400/30 hover:bg-accent-500 dark:border-accent-400/40 dark:bg-accent-500 dark:hover:bg-accent-600"
-              onClick={toggleTheme}
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-              <span>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</span>
-            </button>
+            <div className="flex items-center gap-3">
+              <Button href={site.primaryCta.href}>{site.primaryCta.label}</Button>
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="relative inline-flex h-6 w-11 items-center rounded-full border border-slate-300 bg-slate-200 transition-colors hover:bg-slate-300 dark:border-slate-700 dark:bg-slate-700 dark:hover:bg-slate-600"
+                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                aria-pressed={theme === 'dark'}
+              >
+                <span
+                  className={cn(
+                    'pointer-events-none inline-flex h-5 w-5 items-center justify-center rounded-full bg-white text-slate-700 shadow transition-transform dark:bg-slate-950 dark:text-slate-200',
+                    theme === 'dark' ? 'translate-x-5' : 'translate-x-0.5',
+                  )}
+                >
+                  {theme === 'dark' ? <Sun size={12} /> : <Moon size={12} />}
+                </span>
+              </button>
+            </div>
           </div>
         </nav>
       )}
