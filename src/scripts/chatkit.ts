@@ -1,16 +1,10 @@
 const CHATKIT_SCRIPT_ID = 'openai-chatkit-sdk';
 const CHATKIT_SCRIPT_URL = 'https://cdn.openai.com/chatkit/widget.js';
 
-interface ChatKitMountConfig {
-  client_secret: string;
-  encoded_widget?: string;
-  encodedWidget?: string;
-}
-
 declare global {
   interface Window {
     ChatKit?: {
-      mount: (selector: string, config: ChatKitMountConfig) => void;
+      mount: (selector: string, config: { client_secret: string }) => void;
     };
   }
 }
@@ -42,11 +36,6 @@ const loadChatKitScript = async (): Promise<void> => {
   });
 };
 
-interface SessionResponse {
-  client_secret?: string;
-  encoded_widget?: string;
-}
-
 export const mountChatKit = async (selector: string): Promise<void> => {
   const response = await fetch('/api/chatkit/session', {
     method: 'POST',
@@ -59,7 +48,7 @@ export const mountChatKit = async (selector: string): Promise<void> => {
     throw new Error(await response.text());
   }
 
-  const { client_secret, encoded_widget } = (await response.json()) as SessionResponse;
+  const { client_secret } = (await response.json()) as { client_secret?: string };
 
   if (!client_secret) {
     throw new Error('ChatKit session response did not include client_secret.');
@@ -71,12 +60,5 @@ export const mountChatKit = async (selector: string): Promise<void> => {
     throw new Error('ChatKit SDK did not initialize correctly.');
   }
 
-  const mountConfig: ChatKitMountConfig = { client_secret };
-
-  if (encoded_widget) {
-    mountConfig.encoded_widget = encoded_widget;
-    mountConfig.encodedWidget = encoded_widget;
-  }
-
-  window.ChatKit.mount(selector, mountConfig);
+  window.ChatKit.mount(selector, { client_secret });
 };

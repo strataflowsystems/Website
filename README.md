@@ -108,7 +108,6 @@ Set these variables in **Pages > Settings > Environment variables** (for Preview
 
 - `OPENAI_API_KEY`: your server-side OpenAI API key
 - `OPENAI_WORKFLOW_ID`: ChatKit workflow id used for session creation
-- `OPENAI_CHATKIT_ENCODED_WIDGET` *(optional)*: paste `encodedWidget` from ChatKit output if you want to pin a specific widget payload
 
 ### Security note
 
@@ -116,33 +115,14 @@ The OpenAI API key is intentionally used only inside the Pages Function (`/funct
 
 ### Local and preview testing
 
-#### First-time setup (if you have not done anything yet)
-
-1. In Cloudflare Dashboard, open **Workers & Pages** → your Pages project.
-2. Go to **Settings** → **Environment variables**.
-3. Add both variables in **Preview** and **Production**:
-   - `OPENAI_API_KEY`
-   - `OPENAI_WORKFLOW_ID`
-4. Trigger a redeploy from **Deployments** (Retry/Redeploy).
-5. Open your site homepage and scroll to **Chat with our team** to confirm widget render.
-6. (Optional) If ChatKit gave you JSON with `encodedWidget`, copy that string into `OPENAI_CHATKIT_ENCODED_WIDGET` in both Preview + Production envs.
-7. If it fails, check browser DevTools Network for `POST /api/chatkit/session` and verify status/body.
-
-#### Local Pages Functions run
-
-1. Create local env file from template and fill values:
+1. Run local dev with Pages Functions support:
 
    ```bash
-   cp .dev.vars.example .dev.vars
+   npx wrangler pages dev dist --compatibility-date=2024-12-01
    ```
 
-2. Build then run Pages locally:
+   (or your standard Cloudflare Pages local workflow)
 
-   ```bash
-   npm run dev:pages
-   ```
-
-   (or run `npm run build` then `npm run preview:pages`)
-
-3. Open the local URL and verify the widget mounts in the `#chatkit` container.
+2. Ensure both env vars are set for the local session.
+3. Open the homepage and verify the ChatKit widget mounts in the `#chatkit` container.
 4. In preview deployments, configure the same env vars in the Preview environment and test `/api/chatkit/session` plus homepage widget rendering.
