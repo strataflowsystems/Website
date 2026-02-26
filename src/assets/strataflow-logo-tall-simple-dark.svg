@@ -1,0 +1,7 @@
+<svg width="320" height="420" viewBox="0 0 320 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Strataflow Systems logo dark mode</title>
+  <desc id="desc">Three stacked angled bands representing layered flow.</desc>
+  <path d="M160 52L272 102L160 152L48 102L160 52Z" fill="#11284A" stroke="#8FB7E8" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M160 148L286 204L160 260L34 204L160 148Z" fill="#11284A" stroke="#8FB7E8" stroke-width="12" stroke-linejoin="round"/>
+  <path d="M160 248L300 308L160 368L20 308L160 248Z" fill="#11284A" stroke="#8FB7E8" stroke-width="12" stroke-linejoin="round"/>
+</svg>
