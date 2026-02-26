@@ -8,26 +8,17 @@ const getClientSecret = async (_currentClientSecret: string | null): Promise<str
     },
   });
 
-  const raw = await response.text();
-
-  let payload: { client_secret?: string; error?: unknown; message?: string } = {};
-  try {
-    payload = JSON.parse(raw) as { client_secret?: string; error?: unknown; message?: string };
-  } catch {
-    payload = { message: raw };
-  }
-
   if (!response.ok) {
-    throw new Error(
-      `Unable to create ChatKit session (${response.status}): ${payload.message ?? JSON.stringify(payload.error ?? payload)}`,
-    );
+    throw new Error(await response.text());
   }
 
-  if (!payload.client_secret || typeof payload.client_secret !== 'string') {
-    throw new Error('ChatKit session response did not include a valid client_secret.');
+  const { client_secret } = (await response.json()) as { client_secret?: string };
+
+  if (!client_secret) {
+    throw new Error('ChatKit session response did not include client_secret.');
   }
 
-  return payload.client_secret;
+  return client_secret;
 };
 
 export const ChatKitWidget = () => {
@@ -35,7 +26,7 @@ export const ChatKitWidget = () => {
     api: {
       getClientSecret,
     },
-    onError: (event: unknown) => {
+    onError: (event) => {
       console.error('Unable to mount ChatKit widget.', event);
     },
   });
