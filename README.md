@@ -107,7 +107,8 @@ This project uses a Cloudflare Pages Function to create a short-lived ChatKit se
 Set these variables in **Pages > Settings > Environment variables** (for Preview and Production):
 
 - `OPENAI_API_KEY`: your server-side OpenAI API key
-- `OPENAI_WORKFLOW_ID`: ChatKit workflow id used for session creation
+- `OPENAI_CHATKIT_WORKFLOW_ID`: ChatKit workflow id used for session creation
+
 
 ### Security note
 
