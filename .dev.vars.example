@@ -1,0 +1,7 @@
+# Copy this file to `.dev.vars` for local Cloudflare Pages Functions testing.
+# Never commit real secrets.
+OPENAI_API_KEY=sk-your-openai-api-key
+OPENAI_WORKFLOW_ID=wf_your_chatkit_workflow_id
+
+# Optional: paste encodedWidget from ChatKit output (long base64-like string)
+OPENAI_CHATKIT_ENCODED_WIDGET=

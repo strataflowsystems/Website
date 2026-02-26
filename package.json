@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:pages": "npm run build && npx wrangler pages dev dist --compatibility-date=2026-02-24",
+    "preview:pages": "npx wrangler pages dev dist --compatibility-date=2026-02-24"
   },
   "dependencies": {
     "framer-motion": "^11.11.17",
