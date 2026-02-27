@@ -65,7 +65,7 @@ export function ChatWidget() {
         <div
           id="stratabot-chat-panel"
           className={cn(
-            'h-[560px] w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-2xl shadow-xl',
+            'flex h-[560px] w-[min(360px,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl shadow-xl',
             theme === 'dark' ? 'border border-slate-800 bg-[#1a1d23]' : 'border border-slate-200 bg-white',
           )}
         >
@@ -77,7 +77,7 @@ export function ChatWidget() {
           >
             StrataBot
           </div>
-          <ChatKit control={control} className="h-[calc(100%-49px)] w-full" />
+          <ChatKit control={control} className="min-h-0 flex-1 w-full max-w-full" />
         </div>
       ) : null}
     </div>
