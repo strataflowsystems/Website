@@ -9,7 +9,7 @@ export const StrataBotTestingPage = () => (
       title="StrataBot Testing"
       intro="Use the embedded Microsoft Form below to submit StrataBot testing responses."
     >
-      <div className="rounded-xl border border-slate-200 bg-white p-3 shadow-card dark:border-slate-800 dark:bg-slate-900 md:p-4">
+      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-2 shadow-card dark:border-slate-800 dark:bg-[#0f1115] md:p-3">
         <iframe
           title="StrataBot testing form"
           width="640px"
@@ -18,7 +18,8 @@ export const StrataBotTestingPage = () => (
           frameBorder="0"
           marginWidth={0}
           marginHeight={0}
-          style={{ border: 'none', width: '100%', minHeight: '80vh', maxHeight: '100vh' }}
+          className="block w-full rounded-xl"
+          style={{ border: 'none', minHeight: '80vh', maxHeight: '100vh' }}
           allowFullScreen
         />
       </div>
