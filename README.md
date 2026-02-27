@@ -109,10 +109,26 @@ Set these variables in **Pages > Settings > Environment variables** (for Preview
 - `OPENAI_API_KEY`: your server-side OpenAI API key
 - `OPENAI_CHATKIT_WORKFLOW_ID`: ChatKit workflow id used for session creation
 
+Optional (use when your key is project/org-scoped):
+
+- `OPENAI_PROJECT_ID`: OpenAI project id to send as `OpenAI-Project` header
+- `OPENAI_ORG_ID`: OpenAI organization id to send as `OpenAI-Organization` header
+- `OPENAI_WORKFLOW_ID`: fallback alias for workflow id if you prefer this variable name
+
 
 ### Security note
 
 The OpenAI API key is intentionally used only inside the Pages Function (`/functions/api/chatkit/session.ts`) and is never shipped to client-side JavaScript. The frontend requests only an ephemeral `client_secret` from `/api/chatkit/session`, which limits exposure and follows least-privilege best practices.
+
+### 403 troubleshooting for `/api/chatkit/session`
+
+If you see `POST /api/chatkit/session 403 (Forbidden)`, the proxy function is reachable, but OpenAI rejected session creation. Most commonly:
+
+- API key does not have access to the project where the ChatKit workflow lives.
+- Workflow id is incorrect or belongs to a different project.
+- Project-scoped key is used without `OPENAI_PROJECT_ID`.
+
+After setting/adjusting env vars in Cloudflare Pages, trigger a new deploy so Functions pick up updated values.
 
 ### Local and preview testing
 
