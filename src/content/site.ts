@@ -17,6 +17,7 @@ export const site = {
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
+    { label: 'StrataBot Testing', href: '/stratabot-testing' },
   ],
   hero: {
     heading: 'Spatially aware automation for operations teams that must prove every action.',
@@ -163,6 +164,11 @@ export const seo = {
       title: 'Contact | Strataflow Systems',
       description: 'Book a discovery call and discuss your workflow automation and audit-readiness goals.',
       path: '/contact',
+    },
+    strataBotTesting: {
+      title: 'StrataBot Testing | Strataflow Systems',
+      description: 'Submit StrataBot testing responses using the embedded feedback form.',
+      path: '/stratabot-testing',
     },
     privacy: {
       title: 'Privacy Policy | Strataflow Systems',

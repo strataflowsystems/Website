@@ -7,6 +7,8 @@ import { site } from '@/content/site';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
 
+const isStrataBotTestingRoute = (href: string) => href === '/stratabot-testing';
+
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const { theme, setLightTheme, toggleTheme } = useTheme();
@@ -26,22 +28,28 @@ export const Header = () => {
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {site.nav.map((item) => (
-            <NavLink
-              key={item.href}
-              to={item.href}
-              className={({ isActive }) =>
-                cn(
-                  'text-sm text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100',
-                  isActive && 'font-medium text-slate-950 dark:text-slate-100',
-                )
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
-          <Button href={site.primaryCta.href} className="py-2">
+        <nav className="hidden items-center gap-5 md:flex">
+          {site.nav.map((item) =>
+            isStrataBotTestingRoute(item.href) ? (
+              <Button key={item.href} href={item.href} variant="ghost" className="px-4 py-2 text-xs">
+                {item.label}
+              </Button>
+            ) : (
+              <NavLink
+                key={item.href}
+                to={item.href}
+                className={({ isActive }) =>
+                  cn(
+                    'text-sm text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100',
+                    isActive && 'font-medium text-slate-950 dark:text-slate-100',
+                  )
+                }
+              >
+                {item.label}
+              </NavLink>
+            ),
+          )}
+          <Button href={site.primaryCta.href} className="px-4 py-2 text-xs whitespace-nowrap">
             {site.primaryCta.label}
           </Button>
           <button
@@ -75,13 +83,19 @@ export const Header = () => {
       {open && (
         <nav className="border-t border-slate-200 bg-white px-6 py-4 dark:border-slate-800 dark:bg-slate-900 md:hidden">
           <div className="flex flex-col gap-4">
-            {site.nav.map((item) => (
-              <NavLink key={item.href} to={item.href} className="text-slate-700 dark:text-slate-300" onClick={() => setOpen(false)}>
-                {item.label}
-              </NavLink>
-            ))}
+            {site.nav.map((item) =>
+              isStrataBotTestingRoute(item.href) ? (
+                <Button key={item.href} href={item.href} variant="ghost" className="w-fit" onClick={() => setOpen(false)}>
+                  {item.label}
+                </Button>
+              ) : (
+                <NavLink key={item.href} to={item.href} className="text-slate-700 dark:text-slate-300" onClick={() => setOpen(false)}>
+                  {item.label}
+                </NavLink>
+              ),
+            )}
             <div className="flex items-center gap-3">
-              <Button href={site.primaryCta.href}>{site.primaryCta.label}</Button>
+              <Button href={site.primaryCta.href} className="whitespace-nowrap" onClick={() => setOpen(false)}>{site.primaryCta.label}</Button>
               <button
                 type="button"
                 onClick={toggleTheme}
