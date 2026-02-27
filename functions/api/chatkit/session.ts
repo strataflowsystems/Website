@@ -1,11 +1,16 @@
 export const onRequestPost: PagesFunction<{
   OPENAI_API_KEY: string;
   OPENAI_CHATKIT_WORKFLOW_ID: string;
+  OPENAI_WORKFLOW_ID: string;
+  OPENAI_PROJECT_ID: string;
+  OPENAI_ORG_ID: string;
 }> = async ({ env, request }) => {
-  if (!env.OPENAI_API_KEY || !env.OPENAI_CHATKIT_WORKFLOW_ID) {
+  const workflowId = env.OPENAI_CHATKIT_WORKFLOW_ID || env.OPENAI_WORKFLOW_ID;
+
+  if (!env.OPENAI_API_KEY || !workflowId) {
     return new Response(
       JSON.stringify({
-        error: 'Server is missing OPENAI_API_KEY or OPENAI_CHATKIT_WORKFLOW_ID.',
+        error: 'Server is missing OPENAI_API_KEY or OPENAI_CHATKIT_WORKFLOW_ID (or OPENAI_WORKFLOW_ID).',
       }),
       {
         status: 500,
@@ -14,21 +19,32 @@ export const onRequestPost: PagesFunction<{
     );
   }
 
-  // Simple per-visitor ID (cookie) so ChatKit can associate sessions to a "user"
   const cookie = request.headers.get('Cookie') || '';
   let deviceId = cookie.match(/ck_device=([^;]+)/)?.[1];
 
-  if (!deviceId) deviceId = crypto.randomUUID();
+  if (!deviceId) {
+    deviceId = crypto.randomUUID();
+  }
+
+  const upstreamHeaders: Record<string, string> = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${env.OPENAI_API_KEY}`,
+    'OpenAI-Beta': 'chatkit_beta=v1',
+  };
+
+  if (env.OPENAI_PROJECT_ID) {
+    upstreamHeaders['OpenAI-Project'] = env.OPENAI_PROJECT_ID;
+  }
+
+  if (env.OPENAI_ORG_ID) {
+    upstreamHeaders['OpenAI-Organization'] = env.OPENAI_ORG_ID;
+  }
 
   const res = await fetch('https://api.openai.com/v1/chatkit/sessions', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${env.OPENAI_API_KEY}`,
-      'OpenAI-Beta': 'chatkit_beta=v1',
-    },
+    headers: upstreamHeaders,
     body: JSON.stringify({
-      workflow: { id: env.OPENAI_CHATKIT_WORKFLOW_ID },
+      workflow: { id: workflowId },
       user: deviceId,
     }),
   });
@@ -36,16 +52,29 @@ export const onRequestPost: PagesFunction<{
   const json = await res.json();
 
   if (!res.ok) {
-    return new Response(
-      JSON.stringify({
-        error: json,
-        openai_request_id: res.headers.get('x-request-id') || null,
-      }),
-      {
-        status: res.status,
-        headers: { 'Content-Type': 'application/json' },
-      },
-    );
+    const base = {
+      error: json,
+      openai_request_id: res.headers.get('x-request-id') || null,
+    };
+
+    if (res.status === 401 || res.status === 403) {
+      return new Response(
+        JSON.stringify({
+          ...base,
+          hint:
+            'Verify OPENAI_API_KEY can access the ChatKit workflow project. If your key is scoped to a specific project, set OPENAI_PROJECT_ID. Ensure OPENAI_CHATKIT_WORKFLOW_ID points to an existing workflow in that same project.',
+        }),
+        {
+          status: res.status,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      );
+    }
+
+    return new Response(JSON.stringify(base), {
+      status: res.status,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 
   const headers = new Headers({ 'Content-Type': 'application/json' });

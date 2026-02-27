@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import type { ReactNode } from 'react';
+import type { MouseEventHandler, ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 
 type ButtonProps = {
@@ -8,6 +8,7 @@ type ButtonProps = {
   variant?: 'primary' | 'secondary' | 'ghost';
   external?: boolean;
   className?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
 
 const classes = {
@@ -16,7 +17,7 @@ const classes = {
   ghost: 'text-accent-600 ring-1 ring-accent-600/25 hover:bg-accent-50 focus-visible:ring-accent-500',
 };
 
-export const Button = ({ children, href, variant = 'primary', external, className }: ButtonProps) => {
+export const Button = ({ children, href, variant = 'primary', external, className, onClick }: ButtonProps) => {
   const base = cn(
     'inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium transition-colors duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 [@media(prefers-color-scheme:dark)]:focus-visible:ring-offset-slate-900',
     classes[variant],
@@ -25,7 +26,7 @@ export const Button = ({ children, href, variant = 'primary', external, classNam
 
   if (external) {
     return (
-      <a href={href} className={base} target="_blank" rel="noreferrer">
+      <a href={href} className={base} target="_blank" rel="noreferrer" onClick={onClick}>
         {children}
       </a>
     );
@@ -33,14 +34,14 @@ export const Button = ({ children, href, variant = 'primary', external, classNam
 
   if (href.startsWith('/')) {
     return (
-      <Link to={href} className={base}>
+      <Link to={href} className={base} onClick={onClick}>
         {children}
       </Link>
     );
   }
 
   return (
-    <a href={href} className={base}>
+    <a href={href} className={base} onClick={onClick}>
       {children}
     </a>
   );
