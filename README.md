@@ -114,6 +114,17 @@ Set these variables in **Pages > Settings > Environment variables** (for Preview
 
 The OpenAI API key is intentionally used only inside the Pages Function (`/functions/api/chatkit/session.ts`) and is never shipped to client-side JavaScript. The frontend requests only an ephemeral `client_secret` from `/api/chatkit/session`, which limits exposure and follows least-privilege best practices.
 
+### Production troubleshooting checklist (403/401)
+
+If chat intermittently fails, inspect `POST /api/chatkit/session` in browser DevTools.
+
+Expected diagnostics now include:
+- Response header `X-ChatKit-Trace-Id`
+- Response header `X-OpenAI-Request-Id` (when available)
+- JSON fields `trace_id`, `openai_request_id`, `openai_status`, and `incoming_cf_ray` on upstream errors
+
+These identifiers make it easier to correlate Cloudflare edge requests with OpenAI request logs.
+
 ### Local and preview testing
 
 1. Run local dev with Pages Functions support:
