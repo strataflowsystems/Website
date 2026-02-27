@@ -2,6 +2,18 @@ export const onRequestPost: PagesFunction<{
   OPENAI_API_KEY: string;
   OPENAI_CHATKIT_WORKFLOW_ID: string;
 }> = async ({ env, request }) => {
+  if (!env.OPENAI_API_KEY || !env.OPENAI_CHATKIT_WORKFLOW_ID) {
+    return new Response(
+      JSON.stringify({
+        error: 'Server is missing OPENAI_API_KEY or OPENAI_CHATKIT_WORKFLOW_ID.',
+      }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
+  }
+
   // Simple per-visitor ID (cookie) so ChatKit can associate sessions to a "user"
   const cookie = request.headers.get('Cookie') || '';
   let deviceId = cookie.match(/ck_device=([^;]+)/)?.[1];
@@ -24,10 +36,16 @@ export const onRequestPost: PagesFunction<{
   const json = await res.json();
 
   if (!res.ok) {
-    return new Response(JSON.stringify({ error: json }), {
-      status: res.status,
-      headers: { 'Content-Type': 'application/json' },
-    });
+    return new Response(
+      JSON.stringify({
+        error: json,
+        openai_request_id: res.headers.get('x-request-id') || null,
+      }),
+      {
+        status: res.status,
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
   }
 
   const headers = new Headers({ 'Content-Type': 'application/json' });
