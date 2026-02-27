@@ -22,7 +22,18 @@ export function ChatWidget() {
     api: {
       async getClientSecret(_existing) {
         const res = await fetch('/api/chatkit/session', { method: 'POST' });
+
+        if (!res.ok) {
+          const errorBody = await res.text();
+          throw new Error(`Unable to create ChatKit session (${res.status}): ${errorBody}`);
+        }
+
         const { client_secret } = await res.json();
+
+        if (!client_secret) {
+          throw new Error('ChatKit session response did not include client_secret.');
+        }
+
         return client_secret;
       },
     },
