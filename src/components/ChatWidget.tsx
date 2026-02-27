@@ -47,7 +47,7 @@ export function ChatWidget() {
       <button
         type="button"
         aria-expanded={!isMinimized}
-        aria-controls="chat-widget-panel"
+        aria-controls="stratabot-chat-panel"
         onClick={() => setIsMinimized((prev) => !prev)}
         className={cn(
           'inline-flex h-12 items-center rounded-full px-4 text-sm font-semibold shadow-xl transition',
@@ -56,18 +56,26 @@ export function ChatWidget() {
             : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-100',
         )}
       >
-        {isMinimized ? 'Open AI chat' : 'Minimize AI chat'}
+        {isMinimized ? 'Open StrataBot' : 'Minimize StrataBot'}
       </button>
 
       {!isMinimized ? (
         <div
-          id="chat-widget-panel"
+          id="stratabot-chat-panel"
           className={cn(
             'h-[560px] w-[min(360px,calc(100vw-2rem))] overflow-hidden rounded-2xl shadow-xl',
             theme === 'dark' ? 'border border-slate-800 bg-[#1a1d23]' : 'border border-slate-200 bg-white',
           )}
         >
-          <ChatKit control={control} className="h-full w-full" />
+          <div
+            className={cn(
+              'px-4 py-3 text-sm font-semibold',
+              theme === 'dark' ? 'border-b border-slate-800 text-slate-100' : 'border-b border-slate-200 text-slate-700',
+            )}
+          >
+            StrataBot
+          </div>
+          <ChatKit control={control} className="h-[calc(100%-49px)] w-full" />
         </div>
       ) : null}
     </div>
