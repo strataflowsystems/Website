@@ -167,7 +167,7 @@ export const seo = {
     },
     strataBotTesting: {
       title: 'StrataBot Testing | Strataflow Systems',
-      description: 'Submit StrataBot testing responses using the embedded Microsoft Form.',
+      description: 'Submit StrataBot testing responses using the embedded feedback form.',
       path: '/stratabot-testing',
     },
     privacy: {

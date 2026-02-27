@@ -9,18 +9,18 @@ declare global {
   }
 }
 
-const JOTFORM_IFRAME_ID = 'JotFormIFrame-260574742190054';
-const JOTFORM_SCRIPT_ID = 'jotform-embed-handler-script';
-const JOTFORM_SCRIPT_SRC = 'https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js';
+const FORM_IFRAME_ID = 'JotFormIFrame-260574742190054';
+const EMBED_HANDLER_SCRIPT_ID = 'form-embed-handler-script';
+const EMBED_HANDLER_SCRIPT_SRC = 'https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js';
 
 export const StrataBotTestingPage = () => {
   useEffect(() => {
-    const selector = `iframe[id='${JOTFORM_IFRAME_ID}']`;
+    const selector = `iframe[id='${FORM_IFRAME_ID}']`;
     const initializeEmbed = () => {
       window.jotformEmbedHandler?.(selector, 'https://form.jotform.com/');
     };
 
-    const existingScript = document.getElementById(JOTFORM_SCRIPT_ID) as HTMLScriptElement | null;
+    const existingScript = document.getElementById(EMBED_HANDLER_SCRIPT_ID) as HTMLScriptElement | null;
 
     if (existingScript) {
       initializeEmbed();
@@ -28,8 +28,8 @@ export const StrataBotTestingPage = () => {
     }
 
     const script = document.createElement('script');
-    script.id = JOTFORM_SCRIPT_ID;
-    script.src = JOTFORM_SCRIPT_SRC;
+    script.id = EMBED_HANDLER_SCRIPT_ID;
+    script.src = EMBED_HANDLER_SCRIPT_SRC;
     script.async = true;
     script.onload = initializeEmbed;
     document.body.appendChild(script);
@@ -38,11 +38,11 @@ export const StrataBotTestingPage = () => {
   return (
     <>
       <Seo {...seo.pages.strataBotTesting} />
-      <Section title="StrataBot BUG LOG" intro="Use the Jotform below to submit bot testing feedback.">
+      <Section title="StrataBot BUG LOG" intro="Use the form below to submit bot testing feedback.">
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-card dark:border-slate-800 dark:bg-slate-900 md:p-3">
           <iframe
-            id={JOTFORM_IFRAME_ID}
-            title="Bot Test"
+            id={FORM_IFRAME_ID}
+            title="StrataBot testing form"
             onLoad={() => window.parent.scrollTo(0, 0)}
             allowTransparency
             allow="geolocation; microphone; camera; fullscreen; payment"
