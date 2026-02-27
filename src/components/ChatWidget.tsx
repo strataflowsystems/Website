@@ -4,6 +4,7 @@ import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
 
 const DESKTOP_MEDIA_QUERY = '(min-width: 768px)';
+const STRATABOT_AVATAR_URL = 'https://strataflowsystems.com/Stratabot%20Full.PNG';
 
 const getDefaultMinimizedState = () => {
   if (typeof window === 'undefined') {
@@ -50,13 +51,14 @@ export function ChatWidget() {
         aria-controls="stratabot-chat-panel"
         onClick={() => setIsMinimized((prev) => !prev)}
         className={cn(
-          'inline-flex h-12 items-center rounded-full px-4 text-sm font-semibold shadow-xl transition',
+          'inline-flex h-12 items-center gap-2 rounded-full px-4 text-sm font-semibold shadow-xl transition',
           theme === 'dark'
             ? 'border border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800'
             : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-100',
         )}
       >
-        {isMinimized ? 'Open StrataBot' : 'Minimize StrataBot'}
+        <img src={STRATABOT_AVATAR_URL} alt="StrataBot profile" className="h-7 w-7 rounded-full object-cover" />
+        <span>{isMinimized ? 'Open StrataBot' : 'Minimize StrataBot'}</span>
       </button>
 
       {!isMinimized ? (
