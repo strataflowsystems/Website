@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7f9fc" />
+    <meta name="theme-color" content="#0f1115" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="canonical" href="https://www.strataflowsystems.com/" />
@@ -21,6 +21,18 @@
       src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
       async
     ></script>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('strataflow-theme') || 'dark';
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (_) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <title>Strataflow Systems</title>
   </head>
   <body>

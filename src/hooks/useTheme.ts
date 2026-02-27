@@ -9,7 +9,7 @@ const isTheme = (value: string | null): value is Theme => value === 'light' || v
 
 const getPreferredTheme = (): Theme => {
   if (typeof window === 'undefined') {
-    return 'light';
+    return 'dark';
   }
 
   const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
@@ -17,7 +17,7 @@ const getPreferredTheme = (): Theme => {
     return savedTheme;
   }
 
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return 'dark';
 };
 
 export const useTheme = () => {
