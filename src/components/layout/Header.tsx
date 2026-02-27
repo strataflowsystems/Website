@@ -9,7 +9,7 @@ import { cn } from '@/lib/cn';
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setLightTheme, toggleTheme } = useTheme();
 
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-slate-50/95 backdrop-blur dark:border-slate-800 dark:bg-[#0f1115]/95">
@@ -60,6 +60,15 @@ export const Header = () => {
               {theme === 'dark' ? <Sun size={12} /> : <Moon size={12} />}
             </span>
           </button>
+          {theme === 'dark' && (
+            <button
+              type="button"
+              onClick={setLightTheme}
+              className="text-sm font-medium text-slate-600 transition hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
+            >
+              Prefer Light mode?
+            </button>
+          )}
         </nav>
       </div>
 
@@ -89,6 +98,15 @@ export const Header = () => {
                   {theme === 'dark' ? <Sun size={12} /> : <Moon size={12} />}
                 </span>
               </button>
+              {theme === 'dark' && (
+                <button
+                  type="button"
+                  onClick={setLightTheme}
+                  className="text-sm font-medium text-slate-700 transition hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
+                >
+                  Prefer Light mode?
+                </button>
+              )}
             </div>
           </div>
         </nav>
