@@ -77,10 +77,14 @@ export const onRequestPost: PagesFunction<{
     });
   }
 
-  const headers = new Headers({ 'Content-Type': 'application/json' });
+  const headers = new Headers({
+    'Content-Type': 'application/json',
+    'X-ChatKit-Trace-Id': traceId,
+    'X-OpenAI-Request-Id': res.headers.get('x-request-id') || '',
+  });
   headers.append('Set-Cookie', `ck_device=${deviceId}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=31536000`);
 
-  return new Response(JSON.stringify({ client_secret: json.client_secret }), {
+  return new Response(JSON.stringify({ client_secret: json.client_secret, trace_id: traceId }), {
     status: 200,
     headers,
   });
