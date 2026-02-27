@@ -6,6 +6,7 @@ import { ContactPage } from '@/pages/ContactPage';
 import { HomePage } from '@/pages/HomePage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
 import { ServicesPage } from '@/pages/ServicesPage';
+import { StrataBotTestingPage } from '@/pages/StrataBotTestingPage';
 import { TermsPage } from '@/pages/TermsPage';
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
       <Route path="/case-studies" element={<CaseStudiesPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/stratabot-testing" element={<StrataBotTestingPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
