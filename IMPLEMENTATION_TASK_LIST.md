@@ -10,7 +10,7 @@ This task list converts the implementation audit into a delivery backlog focused
 
 ---
 
-## P0 — Critical fixes (Week 1)
+## P0 - Critical fixes (Week 1)
 
 ### 1) Canonical hostname alignment (bare vs www)
 - [ ] Choose canonical host (`https://strataflowsystems.com` recommended, since live redirects already favor bare domain)
@@ -56,7 +56,7 @@ This task list converts the implementation audit into a delivery backlog focused
 
 ---
 
-## P1 — High-impact structural improvements (Weeks 2–4)
+## P1 - High-impact structural improvements (Weeks 2–4)
 
 ### 6) Improve SEO delivery model for route-level pages
 - [ ] Implement prerender or SSR for key routes (`/`, `/services`, `/case-studies`, `/about`, `/contact`)
@@ -97,7 +97,7 @@ This task list converts the implementation audit into a delivery backlog focused
 
 ---
 
-## P2 — Growth and content expansion backlog (Month 2+)
+## P2 - Growth and content expansion backlog (Month 2+)
 
 ### 11) Build indexable service-page depth
 - [ ] Launch at least 3 dedicated service pages:

@@ -5,7 +5,9 @@ import { PageLayout } from '@/components/layout/PageLayout';
 const HomePage = lazy(() => import('@/pages/HomePage').then((module) => ({ default: module.HomePage })));
 const ServicesPage = lazy(() => import('@/pages/ServicesPage').then((module) => ({ default: module.ServicesPage })));
 const M365AutomationPage = lazy(() => import('@/pages/M365AutomationPage').then((module) => ({ default: module.M365AutomationPage })));
-const ComplianceAuditTrailsPage = lazy(() => import('@/pages/ComplianceAuditTrailsPage').then((module) => ({ default: module.ComplianceAuditTrailsPage })));
+const PowerAutomateConsultancyPage = lazy(() => import('@/pages/PowerAutomateConsultancyPage').then((module) => ({ default: module.PowerAutomateConsultancyPage })));
+const SharePointWorkflowAutomationPage = lazy(() => import('@/pages/SharePointWorkflowAutomationPage').then((module) => ({ default: module.SharePointWorkflowAutomationPage })));
+const PowerPlatformGovernancePage = lazy(() => import('@/pages/PowerPlatformGovernancePage').then((module) => ({ default: module.PowerPlatformGovernancePage })));
 const GeospatialFieldOpsPage = lazy(() => import('@/pages/GeospatialFieldOpsPage').then((module) => ({ default: module.GeospatialFieldOpsPage })));
 const CaseStudiesPage = lazy(() => import('@/pages/CaseStudiesPage').then((module) => ({ default: module.CaseStudiesPage })));
 const AboutPage = lazy(() => import('@/pages/AboutPage').then((module) => ({ default: module.AboutPage })));
@@ -23,7 +25,9 @@ const App = () => (
         <Route path="/" element={<HomePage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/microsoft-365-workflow-automation" element={<M365AutomationPage />} />
-        <Route path="/services/operations-compliance-audit-trails" element={<ComplianceAuditTrailsPage />} />
+        <Route path="/services/power-automate-consultancy" element={<PowerAutomateConsultancyPage />} />
+        <Route path="/services/sharepoint-workflow-automation" element={<SharePointWorkflowAutomationPage />} />
+        <Route path="/services/power-platform-governance" element={<PowerPlatformGovernancePage />} />
         <Route path="/services/geospatial-field-ops-workflows" element={<GeospatialFieldOpsPage />} />
         <Route path="/case-studies" element={<CaseStudiesPage />} />
         <Route path="/about" element={<AboutPage />} />

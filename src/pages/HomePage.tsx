@@ -50,7 +50,7 @@ export const HomePage = () => (
       </ul>
     </Section>
 
-    <Section title="How Strataflow helps" intro="Practical modernization for operators, not abstract transformation programs.">
+    <Section title="Why teams choose Strataflow" intro="Microsoft 365 workflow automation built for operational outcomes, not just technical delivery.">
       <div className="grid gap-4 md:grid-cols-3">
         {site.pillars.map((pillar) => (
           <article key={pillar.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
@@ -83,7 +83,7 @@ export const HomePage = () => (
       </div>
     </Section>
 
-    <Section title="Case study preview" intro="Detailed versions available on request.">
+    <Section title="Proof from similar engagements" intro="Conservative outcomes from operations-heavy UK teams.">
       <div className="grid gap-4 md:grid-cols-3">
         {site.caseStudies.map((cs) => (
           <article key={cs.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
@@ -96,7 +96,7 @@ export const HomePage = () => (
       </div>
     </Section>
 
-    <Section title="Capability snapshot">
+    <Section title="Capabilities across Microsoft 365 and Power Platform">
       <ul className="grid gap-3 md:grid-cols-2">
         {site.capabilities.map((item) => (
           <li key={item} className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-4 text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
@@ -105,6 +105,14 @@ export const HomePage = () => (
           </li>
         ))}
       </ul>
+    </Section>
+
+    <Section title="Trust signals" intro="Built on Microsoft cloud patterns with governance and audit readiness designed in.">
+      <div className="grid gap-3 md:grid-cols-3">
+        <div className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">Microsoft 365-native architecture</div>
+        <div className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">Power Platform governance and CoE controls</div>
+        <div className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">Evidence trails for approvals, files, and location context</div>
+      </div>
     </Section>
 
     <Section title="Chat with our team" intro="Use the chat bubble in the bottom-right corner to ask questions and get quick guidance via our assistant.">
