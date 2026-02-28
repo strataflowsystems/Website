@@ -63,7 +63,7 @@ export function ChatWidget() {
           <div
             aria-hidden
             className={cn(
-              'chat-globe-pattern pointer-events-none absolute inset-0'
+              'chat-globe-pattern pointer-events-none absolute inset-0 opacity-90 dark:opacity-95'
             )}
           />
           <div
