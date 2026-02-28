@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StrataBot Testing Form</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+        background: #f8fafc;
+        color: #0f172a;
+      }
+      main {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      h1 {
+        margin-bottom: 8px;
+        font-size: 1.75rem;
+      }
+      p {
+        margin-top: 0;
+        margin-bottom: 16px;
+        color: #475569;
+      }
+      .frame-wrap {
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #fff;
+      }
+      iframe {
+        width: 100%;
+        min-height: 900px;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>StrataBot Bug Log</h1>
+      <p>Submit StrataBot testing feedback using the embedded Jotform.</p>
+      <div class="frame-wrap">
+        <iframe
+          id="JotFormIFrame-260574742190054"
+          title="StrataBot testing form"
+          src="https://form.jotform.com/260574742190054"
+          allow="geolocation; microphone; camera; fullscreen; payment"
+          scrolling="no"
+        ></iframe>
+      </div>
+    </main>
+    <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+    <script>
+      window.jotformEmbedHandler?.("iframe[id='JotFormIFrame-260574742190054']", 'https://form.jotform.com/');
+    </script>
+  </body>
+</html>

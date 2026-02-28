@@ -37,7 +37,7 @@ export const AiConsultancySessionPage = () => {
               theme === 'dark' ? 'border-slate-700/80 text-slate-100' : 'border-slate-200 text-slate-700',
             )}
           >
-            <span>StrataBot — Full Session</span>
+            <span>StrataBot - Full Session</span>
             <span
               className={cn(
                 'rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-[0.12em]',

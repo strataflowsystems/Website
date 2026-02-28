@@ -1,14 +1,14 @@
 export const site = {
   company: 'Strataflow Systems',
   motto: 'Intelligent Solutions • Spatially Aware.',
-  primaryCta: { label: 'Book a Discovery Call', href: '/contact' },
+  primaryCta: { label: 'Get a Free Workflow Consultation', href: '/contact' },
   secondaryCtas: [
     { label: 'Download Capability Deck', href: '/capability-deck.pdf' },
     { label: 'View Case Studies', href: '/case-studies' },
   ],
   announcement: {
     enabled: true,
-    text: 'Now booking Q2 delivery windows for Microsoft 365 operations modernization.',
+    text: 'Now booking Q2 delivery windows for Microsoft 365 and Power Platform automation in the UK.',
     href: '/contact',
   },
   nav: [
@@ -19,10 +19,10 @@ export const site = {
     { label: 'Contact', href: '/contact' },
   ],
   hero: {
-    heading: 'Spatially aware automation for operations teams that must prove every action.',
+    heading: 'Microsoft 365 Workflow Automation for Operations Teams',
     subheading:
-      'Strataflow designs and deploys Microsoft 365-native workflows with evidence trails built in—so delivery, compliance, and audit readiness improve together.',
-    proof: 'Trusted by operations-heavy teams in infrastructure, logistics, and regulated services.',
+      'Strataflow delivers spatially-aware SharePoint and Power Automate solutions with evidence trails built in-so delivery speed, compliance, and governance improve together.',
+    proof: 'Trusted by operations-heavy teams in infrastructure, logistics, and regulated services. Typical outcomes include 20–30% faster cycle times.',
   },
   problem: [
     'Critical operational work is scattered across email, chats, spreadsheets, and disconnected trackers.',
@@ -32,7 +32,7 @@ export const site = {
   pillars: [
     {
       title: 'Workflow Clarity',
-      description: 'Map and simplify operational workflows into clear, role-based flows inside Microsoft 365.',
+      description: 'Map and simplify operational workflows into clear, role-based flows inside Microsoft 365 and Power Platform.',
     },
     {
       title: 'Evidence by Default',
@@ -56,33 +56,33 @@ export const site = {
   ],
   capabilities: [
     'Microsoft 365-first architecture',
-    'Process automation with Power Platform',
+    'Power Automate consultancy and implementation',
+    'SharePoint workflow automation and document control',
+    'Power Platform governance and CoE setup',
     'Evidence-led activity and decision trails',
     'Spatial context mapping for field operations',
-    'Governance and retention design',
-    'Operational reporting and KPI instrumentation',
   ],
   services: [
     {
-      name: 'Audit & Blueprint',
-      outcomes: ['Current-state process map', 'Risk and evidence-gap register', 'Prioritized modernization roadmap'],
-      deliverables: ['Executive diagnostic brief', 'Workflow architecture blueprint', '90-day action plan'],
-      timeline: 'Typical timeline: 2–4 weeks',
-      bestFor: 'Best for teams needing clarity before investing in automation.',
+      name: 'Microsoft 365 Workflow Automation',
+      outcomes: ['Reduced manual admin and handoffs', 'Faster approvals with clear ownership', 'Audit-ready workflow history'],
+      deliverables: ['Process mapping workshop', 'Production-grade SharePoint/Power Automate flows', 'Reporting dashboards and handover pack'],
+      timeline: 'Typical timeline: 4–8 weeks',
+      bestFor: 'Best for teams replacing manual approvals and document-heavy processes.',
     },
     {
-      name: 'Build & Automate',
-      outcomes: ['Standardized operational workflows', 'Reduced manual coordination', 'Audit-ready data capture'],
-      deliverables: ['Production-ready workflows', 'Role-based dashboards', 'Control and exception handling logic'],
-      timeline: 'Typical timeline: 6–12 weeks',
-      bestFor: 'Best for teams moving from process friction to scalable delivery.',
+      name: 'Power Automate Consultancy',
+      outcomes: ['Repeatable automations across teams', 'Improved reliability and monitoring', 'More hours returned to business teams'],
+      deliverables: ['Automation opportunity audit', 'Flow build and connector setup', 'Health checks and optimization backlog'],
+      timeline: 'Typical timeline: 2–6 weeks',
+      bestFor: 'Best for organizations that want a specialist partner for low-code automation.',
     },
     {
-      name: 'Operate & Improve',
-      outcomes: ['Sustained adoption and process reliability', 'Quarterly control reviews', 'Incremental automation gains'],
-      deliverables: ['Managed optimization backlog', 'Governance cadence and reporting', 'Continuous training support'],
-      timeline: 'Typical timeline: ongoing monthly cadence',
-      bestFor: 'Best for organizations that need a partner to sustain operational excellence.',
+      name: 'Power Platform Governance',
+      outcomes: ['Controlled citizen development', 'Lower security and compliance risk', 'Visible ROI across apps and flows'],
+      deliverables: ['Governance framework', 'DLP and environment policy rollout', 'CoE reporting and guardrails'],
+      timeline: 'Typical timeline: 3–6 weeks',
+      bestFor: 'Best for scaling automation safely across departments.',
     },
   ],
   engagementModel: [
@@ -118,20 +118,20 @@ export const site = {
   ],
   faqs: [
     {
-      q: 'Do you replace our existing systems?',
-      a: 'No. We prioritize Microsoft 365-native patterns and integrate where necessary, preserving systems that already work.',
+      q: 'What is spatially-aware workflow automation?',
+      a: 'Spatially-aware automation means workflows capture where work happens. Strataflow combines location context with Microsoft 365 process logic and evidence trails.',
     },
     {
-      q: 'What does “spatially aware” mean in practice?',
-      a: 'Workflows capture operational context such as site, zone, route, or asset location, improving both execution and accountability.',
+      q: 'Who uses Strataflow services?',
+      a: 'Our projects are designed for operations-heavy teams in utilities, telecoms, infrastructure, logistics, and public-sector programs.',
     },
     {
-      q: 'How quickly can we start?',
-      a: 'Discovery engagements can typically start within 2–3 weeks depending on internal stakeholder availability.',
+      q: 'Is Power Automate secure in Microsoft 365?',
+      a: 'Yes, with the right governance. We apply DLP policies, role-based access, and monitored deployment standards to keep automation secure and reliable.',
     },
     {
-      q: 'Can you support internal teams after deployment?',
-      a: 'Yes. Our Operate & Improve model combines governance reviews, backlog prioritization, and enablement support.',
+      q: 'How quickly can we see value?',
+      a: 'Many engagements deliver first production workflows within a few weeks, with measurable impact in the first 30–60 days.',
     },
   ],
 };
@@ -140,29 +140,39 @@ export const seo = {
   baseUrl: 'https://strataflowsystems.com',
   pages: {
     home: {
-      title: 'Strataflow Systems | Spatially Aware Workflow Automation',
-      description: 'Strataflow Systems helps operations-heavy teams build Microsoft 365-native workflows with evidence and governance built in.',
+      title: 'Strataflow Systems – Microsoft 365 Workflow Automation with Built-in Evidence (UK)',
+      description: 'Microsoft 365 workflow automation and Power Automate consultancy for UK operations teams. Build faster processes with audit-ready evidence trails.',
       path: '/',
     },
     services: {
-      title: 'Services | Strataflow Systems',
-      description: 'Audit & Blueprint, Build & Automate, and Operate & Improve services for evidence-ready operations.',
+      title: 'Workflow Automation Services UK | Strataflow Systems',
+      description: 'Microsoft 365 workflow automation, SharePoint workflows, Power Automate consultancy, governance, and geospatial automation services.',
       path: '/services',
     },
 
     m365Automation: {
-      title: 'Microsoft 365 Workflow Automation | Strataflow Systems',
-      description: 'Microsoft 365 workflow automation for operations teams that need faster execution and audit-ready records.',
+      title: 'Microsoft 365 Workflow Automation Services – Strataflow UK',
+      description: 'Automate approvals and document control with Microsoft 365 workflow automation services built for compliance and speed.',
       path: '/services/microsoft-365-workflow-automation',
     },
-    complianceAuditTrails: {
-      title: 'Operations Compliance & Audit Trails | Strataflow Systems',
-      description: 'Build governance-ready workflows with evidence capture and auditable process controls.',
-      path: '/services/operations-compliance-audit-trails',
+    powerAutomateConsultancy: {
+      title: 'Power Automate Consultancy UK – Workflow Automation Experts',
+      description: 'Power Automate consulting services for secure, scalable low-code process automation across Microsoft 365.',
+      path: '/services/power-automate-consultancy',
+    },
+    sharepointWorkflowAutomation: {
+      title: 'SharePoint Workflow Automation – Document Control & Approvals',
+      description: 'Automate SharePoint approvals, forms, and document workflows with built-in governance and audit history.',
+      path: '/services/sharepoint-workflow-automation',
+    },
+    powerPlatformGovernance: {
+      title: 'Power Platform Governance & CoE – Controlled Automation',
+      description: 'Power Platform governance services to scale Power Apps and Power Automate safely with policy controls and reporting.',
+      path: '/services/power-platform-governance',
     },
     geospatialFieldOps: {
-      title: 'Geospatial Field Operations Workflows | Strataflow Systems',
-      description: 'Integrate geospatial context into Microsoft 365 workflows for field operations and service delivery teams.',
+      title: 'Geospatial Workflow Automation – Location Intelligence Solutions',
+      description: 'Combine GIS and Microsoft 365 workflows for smarter field operations and location-based evidence capture.',
       path: '/services/geospatial-field-ops-workflows',
     },
     caseStudies: {
