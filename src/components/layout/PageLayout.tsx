@@ -4,6 +4,7 @@ import { AnnouncementBanner } from '@/components/layout/AnnouncementBanner';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { ChatWidget } from '@/components/ChatWidget';
+import { AnalyticsTracker } from '@/components/AnalyticsTracker';
 
 const CHAT_WIDGET_HIDDEN_ROUTES = ['/contact'];
 
@@ -13,6 +14,7 @@ export const PageLayout = ({ children }: PropsWithChildren) => {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+      <AnalyticsTracker />
       <AnnouncementBanner />
       <Header />
       <main>{children}</main>

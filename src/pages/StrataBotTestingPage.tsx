@@ -38,7 +38,7 @@ export const StrataBotTestingPage = () => {
   return (
     <>
       <Seo {...seo.pages.strataBotTesting} noindex />
-      <Section title="StrataBot BUG LOG" intro="Use the form below to submit bot testing feedback.">
+      <Section title="StrataBot BUG LOG" headingLevel={1} intro="Use the form below to submit bot testing feedback.">
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-card dark:border-slate-800 dark:bg-slate-900 md:p-3">
           <iframe
             id={FORM_IFRAME_ID}

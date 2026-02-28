@@ -149,6 +149,22 @@ export const seo = {
       description: 'Audit & Blueprint, Build & Automate, and Operate & Improve services for evidence-ready operations.',
       path: '/services',
     },
+
+    m365Automation: {
+      title: 'Microsoft 365 Workflow Automation | Strataflow Systems',
+      description: 'Microsoft 365 workflow automation for operations teams that need faster execution and audit-ready records.',
+      path: '/services/microsoft-365-workflow-automation',
+    },
+    complianceAuditTrails: {
+      title: 'Operations Compliance & Audit Trails | Strataflow Systems',
+      description: 'Build governance-ready workflows with evidence capture and auditable process controls.',
+      path: '/services/operations-compliance-audit-trails',
+    },
+    geospatialFieldOps: {
+      title: 'Geospatial Field Operations Workflows | Strataflow Systems',
+      description: 'Integrate geospatial context into Microsoft 365 workflows for field operations and service delivery teams.',
+      path: '/services/geospatial-field-ops-workflows',
+    },
     caseStudies: {
       title: 'Case Studies | Strataflow Systems',
       description: 'Anonymized operational case studies showing conservative outcomes from M365 modernization.',

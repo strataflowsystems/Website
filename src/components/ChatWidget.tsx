@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StrataBotChat } from '@/components/chatkit/StrataBotChat';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
+import { trackEvent } from '@/lib/analytics';
 
 const STRATABOT_AVATAR_URL = 'https://strataflowsystems.com/Stratabot%20Full.PNG';
 
@@ -15,7 +16,15 @@ export function ChatWidget() {
         type="button"
         aria-expanded={!isMinimized}
         aria-controls="stratabot-chat-panel"
-        onClick={() => setIsMinimized((prev) => !prev)}
+        onClick={() => {
+          setIsMinimized((prev) => {
+            const nextState = !prev;
+            if (!nextState) {
+              trackEvent('chat_open', { location: window.location.pathname });
+            }
+            return nextState;
+          });
+        }}
         className={cn(
           'inline-flex h-12 items-center gap-2 rounded-full px-4 text-sm font-semibold shadow-xl ring-1 transition',
           theme === 'dark'

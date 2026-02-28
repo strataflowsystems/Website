@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { site } from '@/content/site';
 import { Button } from '@/components/ui/Button';
 import { Reveal } from '@/components/ui/Reveal';
+import { trackEvent } from '@/lib/analytics';
 
 export const HeroSection = () => (
   <section className="border-b border-slate-200 dark:border-slate-800/80 py-14 md:py-20">
@@ -14,9 +15,9 @@ export const HeroSection = () => (
         </Reveal>
         <Reveal delay={0.1}>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button href={site.primaryCta.href}>{site.primaryCta.label}</Button>
-            <Button href={site.secondaryCtas[0].href} variant="secondary">{site.secondaryCtas[0].label}</Button>
-            <Button href={site.secondaryCtas[1].href} variant="ghost">{site.secondaryCtas[1].label}</Button>
+            <Button href={site.primaryCta.href} onClick={() => trackEvent('cta_click', { cta: 'hero_primary' })}>{site.primaryCta.label}</Button>
+            <Button href={site.secondaryCtas[0].href} variant="secondary" onClick={() => trackEvent('deck_download_click', { cta: 'hero_secondary' })}>{site.secondaryCtas[0].label}</Button>
+            <Button href={site.secondaryCtas[1].href} variant="ghost" onClick={() => trackEvent('cta_click', { cta: 'hero_case_studies' })}>{site.secondaryCtas[1].label}</Button>
           </div>
         </Reveal>
       </div>
