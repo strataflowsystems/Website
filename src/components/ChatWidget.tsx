@@ -63,10 +63,7 @@ export function ChatWidget() {
           <div
             aria-hidden
             className={cn(
-              'pointer-events-none absolute inset-0',
-              theme === 'dark'
-                ? 'bg-[radial-gradient(circle_at_90%_-10%,rgba(34,211,238,0.22),transparent_38%),linear-gradient(135deg,rgba(148,163,184,0.07)_1px,transparent_1px)] bg-[length:auto,20px_20px]'
-                : 'bg-[radial-gradient(circle_at_90%_-10%,rgba(14,165,233,0.18),transparent_35%),linear-gradient(135deg,rgba(148,163,184,0.12)_1px,transparent_1px)] bg-[length:auto,20px_20px]',
+              'chat-globe-pattern pointer-events-none absolute inset-0'
             )}
           />
           <div

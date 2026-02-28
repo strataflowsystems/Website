@@ -58,10 +58,7 @@ export const ChatKitWidget = () => {
       <div
         aria-hidden
         className={cn(
-          'pointer-events-none absolute inset-0',
-          theme === 'dark'
-            ? 'bg-[radial-gradient(circle_at_90%_-5%,rgba(34,211,238,0.2),transparent_32%),linear-gradient(135deg,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[length:auto,18px_18px]'
-            : 'bg-[radial-gradient(circle_at_90%_-5%,rgba(14,165,233,0.14),transparent_32%),linear-gradient(135deg,rgba(148,163,184,0.12)_1px,transparent_1px)] bg-[length:auto,18px_18px]',
+          'chat-globe-pattern pointer-events-none absolute inset-0'
         )}
       />
       <ChatKit

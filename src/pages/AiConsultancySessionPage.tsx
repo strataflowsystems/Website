@@ -27,10 +27,7 @@ export const AiConsultancySessionPage = () => {
           <div
             aria-hidden
             className={cn(
-              'pointer-events-none absolute inset-0',
-              theme === 'dark'
-                ? 'bg-[radial-gradient(circle_at_85%_-5%,rgba(34,211,238,0.2),transparent_34%),linear-gradient(135deg,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[length:auto,24px_24px]'
-                : 'bg-[radial-gradient(circle_at_85%_-5%,rgba(14,165,233,0.14),transparent_34%),linear-gradient(135deg,rgba(148,163,184,0.12)_1px,transparent_1px)] bg-[length:auto,24px_24px]',
+              'chat-globe-pattern pointer-events-none absolute inset-0'
             )}
           />
           <div

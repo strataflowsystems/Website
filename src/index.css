@@ -27,6 +27,24 @@ body {
 }
 
 
+
+.chat-globe-pattern {
+  background-image:
+    radial-gradient(circle at 82% -8%, rgba(14, 165, 233, 0.2), transparent 36%),
+    repeating-radial-gradient(circle at 72% 42%, rgba(56, 189, 248, 0.14) 0 1px, transparent 1px 12px),
+    repeating-linear-gradient(140deg, rgba(148, 163, 184, 0.12) 0 1px, transparent 1px 18px);
+  background-size: auto, 220px 220px, 22px 22px;
+  background-position: center, right -35px top -30px, center;
+}
+
+.dark .chat-globe-pattern {
+  background-image:
+    radial-gradient(circle at 82% -8%, rgba(34, 211, 238, 0.22), transparent 39%),
+    repeating-radial-gradient(circle at 72% 42%, rgba(103, 232, 249, 0.18) 0 1px, transparent 1px 12px),
+    repeating-linear-gradient(140deg, rgba(148, 163, 184, 0.07) 0 1px, transparent 1px 18px);
+}
+
+
 html,
 body,
 body * {
