@@ -21,7 +21,7 @@ export const site = {
   hero: {
     heading: 'Microsoft 365 Workflow Automation for Operations Teams',
     subheading:
-      'Strataflow delivers spatially-aware SharePoint and Power Automate solutions with evidence trails built in—so delivery speed, compliance, and governance improve together.',
+      'Strataflow delivers spatially-aware SharePoint and Power Automate solutions with evidence trails built in-so delivery speed, compliance, and governance improve together.',
     proof: 'Trusted by operations-heavy teams in infrastructure, logistics, and regulated services. Typical outcomes include 20–30% faster cycle times.',
   },
   problem: [
