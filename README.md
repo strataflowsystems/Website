@@ -130,6 +130,21 @@ If you see `POST /api/chatkit/session 403 (Forbidden)`, the proxy function is re
 
 After setting/adjusting env vars in Cloudflare Pages, trigger a new deploy so Functions pick up updated values.
 
+When capturing a failing `/api/chatkit/session` response for debugging, include:
+
+- Response headers:
+  - `X-ChatKit-Trace-Id`
+  - `X-OpenAI-Request-Id` (if present)
+  - `cf-ray` (Cloudflare edge id)
+- JSON body fields:
+  - `trace_id`
+  - `incoming_cf_ray`
+  - `openai_status`
+  - `openai_request_id`
+  - `error`
+
+These values are intended to allow direct correlation of 403/401 failures between Cloudflare request logs and OpenAI request identifiers.
+
 ### Local and preview testing
 
 1. Run local dev with Pages Functions support:

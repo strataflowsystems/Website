@@ -6,16 +6,32 @@ export const onRequestPost: PagesFunction<{
   OPENAI_ORG_ID: string;
 }> = async ({ env, request }) => {
   const traceId = crypto.randomUUID();
+  const incomingCfRay = request.headers.get('cf-ray');
   const workflowId = env.OPENAI_CHATKIT_WORKFLOW_ID || env.OPENAI_WORKFLOW_ID;
+
+  const createHeaders = (openaiRequestId?: string | null): Headers => {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'X-ChatKit-Trace-Id': traceId,
+    });
+
+    if (openaiRequestId) {
+      headers.set('X-OpenAI-Request-Id', openaiRequestId);
+    }
+
+    return headers;
+  };
 
   if (!env.OPENAI_API_KEY || !workflowId) {
     return new Response(
       JSON.stringify({
         error: 'Server is missing OPENAI_API_KEY or OPENAI_CHATKIT_WORKFLOW_ID (or OPENAI_WORKFLOW_ID).',
+        trace_id: traceId,
+        incoming_cf_ray: incomingCfRay,
       }),
       {
         status: 500,
-        headers: { 'Content-Type': 'application/json' },
+        headers: createHeaders(),
       },
     );
   }
@@ -41,21 +57,57 @@ export const onRequestPost: PagesFunction<{
     upstreamHeaders['OpenAI-Organization'] = env.OPENAI_ORG_ID;
   }
 
-  const res = await fetch('https://api.openai.com/v1/chatkit/sessions', {
-    method: 'POST',
-    headers: upstreamHeaders,
-    body: JSON.stringify({
-      workflow: { id: workflowId },
-      user: deviceId,
-    }),
-  });
+  let res: Response;
+  try {
+    res = await fetch('https://api.openai.com/v1/chatkit/sessions', {
+      method: 'POST',
+      headers: upstreamHeaders,
+      body: JSON.stringify({
+        workflow: { id: workflowId },
+        user: deviceId,
+      }),
+    });
+  } catch (error) {
+    return new Response(
+      JSON.stringify({
+        error: 'Upstream network failure while creating ChatKit session.',
+        details: {
+          trace_id: traceId,
+          incoming_cf_ray: incomingCfRay,
+          openai_status: null,
+          openai_request_id: null,
+          upstream_error:
+            error instanceof Error
+              ? { name: error.name, message: error.message }
+              : { message: String(error) },
+        },
+      }),
+      {
+        status: 502,
+        headers: createHeaders(),
+      },
+    );
+  }
 
-  const json = await res.json();
+  const openaiRequestId = res.headers.get('x-request-id');
+  const upstreamBodyText = await res.text();
+  let upstreamJson: Record<string, unknown> | null = null;
+
+  if (upstreamBodyText) {
+    try {
+      upstreamJson = JSON.parse(upstreamBodyText) as Record<string, unknown>;
+    } catch {
+      upstreamJson = null;
+    }
+  }
 
   if (!res.ok) {
     const base = {
-      error: json,
-      openai_request_id: res.headers.get('x-request-id') || null,
+      error: upstreamJson ?? { raw: upstreamBodyText || null },
+      trace_id: traceId,
+      incoming_cf_ray: incomingCfRay,
+      openai_status: res.status,
+      openai_request_id: openaiRequestId,
     };
 
     if (res.status === 401 || res.status === 403) {
@@ -67,26 +119,28 @@ export const onRequestPost: PagesFunction<{
         }),
         {
           status: res.status,
-          headers: { 'Content-Type': 'application/json' },
+          headers: createHeaders(openaiRequestId),
         },
       );
     }
 
     return new Response(JSON.stringify(base), {
       status: res.status,
-      headers: { 'Content-Type': 'application/json' },
+      headers: createHeaders(openaiRequestId),
     });
   }
 
-  const headers = new Headers({
-    'Content-Type': 'application/json',
-    'X-ChatKit-Trace-Id': traceId,
-    'X-OpenAI-Request-Id': res.headers.get('x-request-id') || '',
-  });
+  const headers = createHeaders(openaiRequestId);
   headers.append('Set-Cookie', `ck_device=${deviceId}; Path=/; Secure; HttpOnly; SameSite=Lax; Max-Age=31536000`);
 
-  return new Response(JSON.stringify({ client_secret: json.client_secret, trace_id: traceId }), {
-    status: 200,
-    headers,
-  });
+  return new Response(
+    JSON.stringify({
+      client_secret: upstreamJson?.client_secret ?? null,
+      trace_id: traceId,
+    }),
+    {
+      status: 200,
+      headers,
+    },
+  );
 };
