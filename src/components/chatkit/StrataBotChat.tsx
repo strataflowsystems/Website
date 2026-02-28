@@ -7,6 +7,15 @@ type StrataBotChatProps = {
 
 export const StrataBotChat = ({ className }: StrataBotChatProps) => {
   const { theme } = useTheme();
+  const chatTheme = {
+    colorScheme: theme,
+    color: {
+      surface: {
+        background: theme === 'dark' ? '#0f1115' : '#f8fafc',
+        foreground: theme === 'dark' ? '#f1f5f9' : '#0f172a',
+      },
+    },
+  } as const;
 
   const { control } = useChatKit({
     api: {
@@ -33,7 +42,7 @@ export const StrataBotChat = ({ className }: StrataBotChatProps) => {
         return client_secret;
       },
     },
-    theme,
+    theme: chatTheme,
   });
 
   return <ChatKit control={control} className={className} />;

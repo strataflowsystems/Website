@@ -18,19 +18,40 @@ export const AiConsultancySessionPage = () => {
       >
         <div
           className={cn(
-            'flex h-[calc(100vh-17rem)] min-h-[640px] flex-col overflow-hidden rounded-2xl shadow-card',
-            theme === 'dark' ? 'border border-slate-800 bg-[#1a1d23]' : 'border border-slate-200 bg-white',
+            'relative isolate flex h-[calc(100vh-17rem)] min-h-[640px] flex-col overflow-hidden rounded-2xl shadow-2xl ring-1',
+            theme === 'dark'
+              ? 'border border-slate-700/80 bg-[#0f1115] ring-cyan-500/30'
+              : 'border border-slate-200 bg-slate-50 ring-cyan-300/60',
           )}
         >
           <div
+            aria-hidden
             className={cn(
-              'px-4 py-3 text-sm font-semibold',
-              theme === 'dark' ? 'border-b border-slate-800 text-slate-100' : 'border-b border-slate-200 text-slate-700',
+              'pointer-events-none absolute inset-0',
+              theme === 'dark'
+                ? 'bg-[radial-gradient(circle_at_85%_-5%,rgba(34,211,238,0.2),transparent_34%),linear-gradient(135deg,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[length:auto,24px_24px]'
+                : 'bg-[radial-gradient(circle_at_85%_-5%,rgba(14,165,233,0.14),transparent_34%),linear-gradient(135deg,rgba(148,163,184,0.12)_1px,transparent_1px)] bg-[length:auto,24px_24px]',
+            )}
+          />
+          <div
+            className={cn(
+              'relative z-10 flex items-center justify-between border-b px-4 py-3 text-sm font-semibold backdrop-blur-sm',
+              theme === 'dark' ? 'border-slate-700/80 text-slate-100' : 'border-slate-200 text-slate-700',
             )}
           >
-            StrataBot — Full Session
+            <span>StrataBot — Full Session</span>
+            <span
+              className={cn(
+                'rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-[0.12em]',
+                theme === 'dark' ? 'border-cyan-400/40 text-cyan-200' : 'border-cyan-500/40 text-cyan-700',
+              )}
+            >
+              Premium Workspace
+            </span>
           </div>
-          <StrataBotChat className="min-h-0 flex-1 w-full max-w-full" />
+          <div className="relative z-10 min-h-0 flex-1">
+            <StrataBotChat className="min-h-0 h-full w-full max-w-full bg-transparent" />
+          </div>
         </div>
       </Section>
     </>
