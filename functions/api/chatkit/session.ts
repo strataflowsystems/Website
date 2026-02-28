@@ -5,6 +5,7 @@ export const onRequestPost: PagesFunction<{
   OPENAI_PROJECT_ID: string;
   OPENAI_ORG_ID: string;
 }> = async ({ env, request }) => {
+  const traceId = crypto.randomUUID();
   const workflowId = env.OPENAI_CHATKIT_WORKFLOW_ID || env.OPENAI_WORKFLOW_ID;
 
   if (!env.OPENAI_API_KEY || !workflowId) {
