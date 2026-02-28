@@ -4,9 +4,28 @@ import { Seo } from '@/components/ui/Seo';
 import { seo } from '@/content/site';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
+import { isChatKitEnabled } from '@/lib/chatkit';
 
 export const AiConsultancySessionPage = () => {
   const { theme } = useTheme();
+
+  if (!isChatKitEnabled()) {
+    return (
+      <>
+        <Seo {...seo.pages.aiConsultancySession} noindex />
+        <Section
+          title="AI Consultancy Session"
+          headingLevel={1}
+          intro="Chat is disabled for this environment. Set VITE_ENABLE_CHATKIT to any value except false to enable it."
+          className="py-8"
+        >
+          <div className="rounded-2xl border border-amber-300 bg-amber-50 p-6 text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/40 dark:text-amber-200">
+            Set <code>VITE_ENABLE_CHATKIT=false</code> to keep chat disabled. To use chat, ensure the <code>/api/chatkit/session</code> function environment variables are configured.
+          </div>
+        </Section>
+      </>
+    );
+  }
 
   return (
     <>

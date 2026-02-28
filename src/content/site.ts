@@ -17,6 +17,7 @@ export const site = {
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
+    { label: 'StrataBot Testing', href: '/stratabot-testing' },
   ],
   hero: {
     heading: 'Microsoft 365 Workflow Automation for Operations Teams',
