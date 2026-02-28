@@ -1,6 +1,7 @@
 import { ChatKit, useChatKit } from '@openai/chatkit-react';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
+import { getChatKitTheme } from '@/components/chatkit/chatTheme';
 
 const getClientSecret = async (currentClientSecret: string | null): Promise<string> => {
   const response = await fetch('/api/chatkit/session', {
@@ -26,23 +27,40 @@ const getClientSecret = async (currentClientSecret: string | null): Promise<stri
 
 export const ChatKitWidget = () => {
   const { theme } = useTheme();
+  const chatTheme = getChatKitTheme(theme);
+
   const chatKit = useChatKit({
     api: {
       getClientSecret,
     },
-    theme,
+    theme: chatTheme,
     onError: (event) => {
       console.error('Unable to mount ChatKit widget.', event);
     },
   });
 
   return (
-    <ChatKit
-      control={chatKit.control}
+    <div
       className={cn(
-        'block min-h-96 rounded-xl p-4 shadow-card',
-        theme === 'dark' ? 'border border-slate-800 bg-[#1a1d23]' : 'border border-slate-200 bg-white',
+        'relative isolate min-h-96 overflow-hidden rounded-xl shadow-card ring-1',
+        theme === 'dark'
+          ? 'border border-slate-700/80 bg-[#0f1115] ring-cyan-500/25'
+          : 'border border-slate-200 bg-slate-50 ring-cyan-300/60',
       )}
-    />
+    >
+      <div
+        aria-hidden
+        className={cn(
+          'chat-globe-pattern pointer-events-none absolute inset-0 opacity-90 dark:opacity-95'
+        )}
+      />
+      <ChatKit
+        control={chatKit.control}
+        className={cn(
+          'relative z-10 block min-h-96 rounded-xl bg-transparent p-4',
+          theme === 'dark' ? 'text-slate-100' : 'text-slate-900',
+        )}
+      />
+    </div>
   );
 };

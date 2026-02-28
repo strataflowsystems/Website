@@ -40,10 +40,10 @@ export function ChatWidget() {
         aria-controls="stratabot-chat-panel"
         onClick={() => setIsMinimized((prev) => !prev)}
         className={cn(
-          'inline-flex h-12 items-center gap-2 rounded-full px-4 text-sm font-semibold shadow-xl transition',
+          'inline-flex h-12 items-center gap-2 rounded-full px-4 text-sm font-semibold shadow-xl ring-1 transition',
           theme === 'dark'
-            ? 'border border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800'
-            : 'border border-slate-200 bg-white text-slate-700 hover:bg-slate-100',
+            ? 'border border-cyan-400/30 bg-gradient-to-r from-slate-900 via-slate-900 to-cyan-950/70 text-slate-100 ring-cyan-400/30 hover:border-cyan-300/50 hover:from-slate-800 hover:to-cyan-900/70'
+            : 'border border-cyan-300/60 bg-gradient-to-r from-white via-white to-cyan-50 text-slate-700 ring-cyan-200/70 hover:border-cyan-400/60 hover:to-cyan-100',
         )}
       >
         <img src={STRATABOT_AVATAR_URL} alt="StrataBot profile" className="h-7 w-7 rounded-full object-cover" />
@@ -54,19 +54,37 @@ export function ChatWidget() {
         <div
           id="stratabot-chat-panel"
           className={cn(
-            'flex h-[560px] w-[min(360px,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl shadow-xl',
-            theme === 'dark' ? 'border border-slate-800 bg-[#1a1d23]' : 'border border-slate-200 bg-white',
+            'relative isolate flex h-[560px] w-[min(380px,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl shadow-2xl ring-1',
+            theme === 'dark'
+              ? 'border border-slate-700/80 bg-[#0f1115] ring-cyan-500/30'
+              : 'border border-slate-200 bg-slate-50 ring-cyan-300/60',
           )}
         >
           <div
+            aria-hidden
             className={cn(
-              'px-4 py-3 text-sm font-semibold',
-              theme === 'dark' ? 'border-b border-slate-800 text-slate-100' : 'border-b border-slate-200 text-slate-700',
+              'chat-globe-pattern pointer-events-none absolute inset-0 opacity-90 dark:opacity-95'
+            )}
+          />
+          <div
+            className={cn(
+              'relative z-10 flex items-center justify-between border-b px-4 py-3 text-sm font-semibold backdrop-blur-sm',
+              theme === 'dark' ? 'border-slate-700/80 text-slate-100' : 'border-slate-200 text-slate-700',
             )}
           >
-            StrataBot
+            <span>StrataBot</span>
+            <span
+              className={cn(
+                'rounded-full border px-2 py-0.5 text-[10px] uppercase tracking-[0.12em]',
+                theme === 'dark' ? 'border-cyan-400/40 text-cyan-200' : 'border-cyan-500/40 text-cyan-700',
+              )}
+            >
+              Strata Intelligence
+            </span>
           </div>
-          <StrataBotChat className="min-h-0 flex-1 w-full max-w-full" />
+          <div className="relative z-10 min-h-0 flex-1">
+            <StrataBotChat className="min-h-0 h-full w-full max-w-full bg-transparent" />
+          </div>
         </div>
       ) : null}
     </div>
