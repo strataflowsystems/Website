@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.strataflowsystems.com/</loc></url>
-  <url><loc>https://www.strataflowsystems.com/services</loc></url>
-  <url><loc>https://www.strataflowsystems.com/case-studies</loc></url>
-  <url><loc>https://www.strataflowsystems.com/about</loc></url>
-  <url><loc>https://www.strataflowsystems.com/contact</loc></url>
-  <url><loc>https://www.strataflowsystems.com/privacy</loc></url>
-  <url><loc>https://www.strataflowsystems.com/terms</loc></url>
+  <url><loc>https://strataflowsystems.com/</loc></url>
+  <url><loc>https://strataflowsystems.com/services</loc></url>
+  <url><loc>https://strataflowsystems.com/services/microsoft-365-workflow-automation</loc></url>
+  <url><loc>https://strataflowsystems.com/services/operations-compliance-audit-trails</loc></url>
+  <url><loc>https://strataflowsystems.com/services/geospatial-field-ops-workflows</loc></url>
+  <url><loc>https://strataflowsystems.com/case-studies</loc></url>
+  <url><loc>https://strataflowsystems.com/about</loc></url>
+  <url><loc>https://strataflowsystems.com/contact</loc></url>
+  <url><loc>https://strataflowsystems.com/privacy</loc></url>
+  <url><loc>https://strataflowsystems.com/terms</loc></url>
 </urlset>

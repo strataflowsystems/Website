@@ -5,9 +5,10 @@ type SeoProps = {
   title: string;
   description: string;
   path: string;
+  noindex?: boolean;
 };
 
-export const Seo = ({ title, description, path }: SeoProps) => {
+export const Seo = ({ title, description, path, noindex = false }: SeoProps) => {
   const url = `${seo.baseUrl}${path}`;
 
   return (
@@ -15,6 +16,7 @@ export const Seo = ({ title, description, path }: SeoProps) => {
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={url} />
+      {noindex ? <meta name="robots" content="noindex, nofollow" /> : null}
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />

@@ -1,21 +1,25 @@
-import type { ReactNode } from 'react';
+import { PropsWithChildren } from 'react';
+import { useLocation } from 'react-router-dom';
 import { AnnouncementBanner } from '@/components/layout/AnnouncementBanner';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { ChatWidget } from '@/components/ChatWidget';
+import { AnalyticsTracker } from '@/components/AnalyticsTracker';
 
-export const PageLayout = ({ children }: { children: ReactNode }) => (
-  <div className="min-h-screen bg-slate-50 dark:bg-[#0f1115] pattern-bg bg-grid">
-    <a
-      href="#main-content"
-      className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:dark:bg-slate-900 focus:px-3 focus:py-2"
-    >
-      Skip to content
-    </a>
-    <AnnouncementBanner />
-    <Header />
-    <main id="main-content">{children}</main>
-    <ChatWidget />
-    <Footer />
-  </div>
-);
+const CHAT_WIDGET_HIDDEN_ROUTES = ['/contact'];
+
+export const PageLayout = ({ children }: PropsWithChildren) => {
+  const { pathname } = useLocation();
+  const shouldShowChatWidget = !CHAT_WIDGET_HIDDEN_ROUTES.includes(pathname);
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+      <AnalyticsTracker />
+      <AnnouncementBanner />
+      <Header />
+      <main>{children}</main>
+      <Footer />
+      {shouldShowChatWidget ? <ChatWidget /> : null}
+    </div>
+  );
+};

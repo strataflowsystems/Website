@@ -6,7 +6,7 @@ import { seo, site } from '@/content/site';
 export const CaseStudiesPage = () => (
   <>
     <Seo {...seo.pages.caseStudies} />
-    <Section title="Selected case studies" intro="Conservative, operations-focused outcomes from real implementations.">
+    <Section title="Selected case studies" headingLevel={1} intro="Conservative, operations-focused outcomes from real implementations.">
       <div className="space-y-4">
         {site.caseStudies.map((study) => (
           <article key={study.title} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-card">

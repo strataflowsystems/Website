@@ -17,8 +17,6 @@ export const site = {
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
-    { label: 'AI Consultancy Session', href: '/ai-consultancy-session' },
-    { label: 'StrataBot Testing', href: '/stratabot-testing' },
   ],
   hero: {
     heading: 'Spatially aware automation for operations teams that must prove every action.',
@@ -139,7 +137,7 @@ export const site = {
 };
 
 export const seo = {
-  baseUrl: 'https://www.strataflowsystems.com',
+  baseUrl: 'https://strataflowsystems.com',
   pages: {
     home: {
       title: 'Strataflow Systems | Spatially Aware Workflow Automation',
@@ -150,6 +148,22 @@ export const seo = {
       title: 'Services | Strataflow Systems',
       description: 'Audit & Blueprint, Build & Automate, and Operate & Improve services for evidence-ready operations.',
       path: '/services',
+    },
+
+    m365Automation: {
+      title: 'Microsoft 365 Workflow Automation | Strataflow Systems',
+      description: 'Microsoft 365 workflow automation for operations teams that need faster execution and audit-ready records.',
+      path: '/services/microsoft-365-workflow-automation',
+    },
+    complianceAuditTrails: {
+      title: 'Operations Compliance & Audit Trails | Strataflow Systems',
+      description: 'Build governance-ready workflows with evidence capture and auditable process controls.',
+      path: '/services/operations-compliance-audit-trails',
+    },
+    geospatialFieldOps: {
+      title: 'Geospatial Field Operations Workflows | Strataflow Systems',
+      description: 'Integrate geospatial context into Microsoft 365 workflows for field operations and service delivery teams.',
+      path: '/services/geospatial-field-ops-workflows',
     },
     caseStudies: {
       title: 'Case Studies | Strataflow Systems',

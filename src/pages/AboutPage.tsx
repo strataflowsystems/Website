@@ -5,7 +5,7 @@ import { seo } from '@/content/site';
 export const AboutPage = () => (
   <>
     <Seo {...seo.pages.about} />
-    <Section title="About Strataflow Systems" intro="We help operations-heavy teams execute with confidence and evidence-readiness by design.">
+    <Section title="About Strataflow Systems" headingLevel={1} intro="We help operations-heavy teams execute with confidence and evidence-readiness by design.">
       <div className="space-y-8 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 shadow-card">
         <div>
           <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">Mission</h2>

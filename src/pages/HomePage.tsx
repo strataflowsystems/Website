@@ -1,57 +1,83 @@
 import { CheckCircle2 } from 'lucide-react';
 import { FinalCtaBand } from '@/components/sections/FinalCtaBand';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { Reveal } from '@/components/ui/Reveal';
 import { Section } from '@/components/ui/Section';
 import { Seo } from '@/components/ui/Seo';
+import { StructuredData } from '@/components/ui/StructuredData';
 import { seo, site } from '@/content/site';
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.company,
+  url: 'https://strataflowsystems.com',
+  email: 'hello@strataflowsystems.com',
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: site.company,
+  url: 'https://strataflowsystems.com',
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: site.faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
 
 export const HomePage = () => (
   <>
     <Seo {...seo.pages.home} />
+    <StructuredData data={[orgSchema, websiteSchema, faqSchema]} />
     <HeroSection />
 
-    <Section title="Why operations teams struggle to prove work">
-      <div className="grid gap-4 md:grid-cols-3">
-        {site.problem.map((item, index) => (
-          <Reveal key={item} delay={index * 0.08}>
-            <div className="h-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 text-slate-600 dark:text-slate-400 shadow-card">{item}</div>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
-
-    <Section title="Solution pillars">
-      <div className="grid gap-4 md:grid-cols-3">
-        {site.pillars.map((pillar, index) => (
-          <Reveal key={pillar.title} delay={index * 0.1}>
-            <article className="h-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-card">
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
-              <p className="mt-3 text-slate-600 dark:text-slate-400">{pillar.description}</p>
-            </article>
-          </Reveal>
-        ))}
-      </div>
-    </Section>
-
-    <Section title="How it works">
-      <ol className="grid gap-4 md:grid-cols-4">
-        {site.howItWorks.map((step, index) => (
-          <li key={step.title} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5 shadow-card">
-            <p className="text-sm font-medium text-accent-600">Step {index + 1}</p>
-            <h3 className="mt-2 font-semibold text-slate-900 dark:text-slate-100">{step.title}</h3>
-            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{step.description}</p>
+    <Section title="The operational bottleneck" headingLevel={2}>
+      <ul className="grid gap-3 md:grid-cols-3">
+        {site.problem.map((item) => (
+          <li key={item} className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+            {item}
           </li>
         ))}
-      </ol>
+      </ul>
     </Section>
 
-    <Section title="Industries served">
+    <Section title="How Strataflow helps" intro="Practical modernization for operators, not abstract transformation programs.">
+      <div className="grid gap-4 md:grid-cols-3">
+        {site.pillars.map((pillar) => (
+          <article key={pillar.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{pillar.title}</h3>
+            <p className="mt-3 text-slate-600 dark:text-slate-400">{pillar.description}</p>
+          </article>
+        ))}
+      </div>
+    </Section>
+
+    <Section title="How we deliver" intro="A proven model from diagnostic through managed optimization.">
+      <div className="grid gap-4 md:grid-cols-4">
+        {site.howItWorks.map((step) => (
+          <div key={step.title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-card dark:border-slate-800 dark:bg-slate-900">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{step.title}</h3>
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
+
+    <Section title="Industry focus">
       <div className="grid gap-4 md:grid-cols-3">
         {site.industries.map((industry) => (
-          <div key={industry.title} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-card">
-            <h3 className="font-semibold text-slate-900 dark:text-slate-100">{industry.title}</h3>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">{industry.description}</p>
+          <div key={industry.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
+            <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100">{industry.title}</h3>
+            <p className="mt-3 text-slate-600 dark:text-slate-400">{industry.description}</p>
           </div>
         ))}
       </div>
@@ -60,7 +86,7 @@ export const HomePage = () => (
     <Section title="Case study preview" intro="Detailed versions available on request.">
       <div className="grid gap-4 md:grid-cols-3">
         {site.caseStudies.map((cs) => (
-          <article key={cs.title} className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-card">
+          <article key={cs.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
             <p className="text-sm text-slate-500 dark:text-slate-500">{cs.clientType}</p>
             <h3 className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-100">{cs.title}</h3>
             <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">{cs.challenge}</p>
@@ -73,7 +99,7 @@ export const HomePage = () => (
     <Section title="Capability snapshot">
       <ul className="grid gap-3 md:grid-cols-2">
         {site.capabilities.map((item) => (
-          <li key={item} className="flex items-start gap-3 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 text-slate-700 dark:text-slate-300">
+          <li key={item} className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-4 text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
             <CheckCircle2 className="mt-0.5 text-accent-600" size={18} />
             {item}
           </li>
@@ -82,13 +108,13 @@ export const HomePage = () => (
     </Section>
 
     <Section title="Chat with our team" intro="Use the chat bubble in the bottom-right corner to ask questions and get quick guidance via our assistant.">
-      <p className="text-slate-600 dark:text-slate-400">The assistant is available on every page via the floating widget.</p>
+      <p className="text-slate-600 dark:text-slate-400">The assistant is available on every page except contact, where we minimize distractions for form completion.</p>
     </Section>
 
     <Section title="FAQ">
       <div className="space-y-3">
         {site.faqs.map((faq) => (
-          <details key={faq.q} className="rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-5">
+          <details key={faq.q} className="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
             <summary className="cursor-pointer font-medium text-slate-900 dark:text-slate-100">{faq.q}</summary>
             <p className="mt-3 text-slate-600 dark:text-slate-400">{faq.a}</p>
           </details>

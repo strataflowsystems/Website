@@ -1,6 +1,7 @@
 import { site } from '@/content/site';
 import { Button } from '@/components/ui/Button';
 import { Section } from '@/components/ui/Section';
+import { trackEvent } from '@/lib/analytics';
 
 export const FinalCtaBand = () => (
   <Section className="pt-8">
@@ -10,8 +11,8 @@ export const FinalCtaBand = () => (
         Start with a focused discovery call and get a practical path to automation, evidence readiness, and governance alignment.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
-        <Button href={site.primaryCta.href}>{site.primaryCta.label}</Button>
-        <Button href="/services" variant="secondary">Explore Services</Button>
+        <Button href={site.primaryCta.href} onClick={() => trackEvent('cta_click', { cta: 'final_band_primary' })}>{site.primaryCta.label}</Button>
+        <Button href="/services" variant="secondary" onClick={() => trackEvent('cta_click', { cta: 'final_band_secondary' })}>Explore Services</Button>
       </div>
     </div>
   </Section>
