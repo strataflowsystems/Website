@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting…</title>
+    <title>404 | Page not found</title>
     <meta name="robots" content="noindex" />
   </head>
   <body>
-    <script>
-      // Safety fallback for static hosts when rewrite rules are not applied.
-      // Cloudflare Pages should use /_redirects, but this prevents hard 404 lockout.
-      window.location.replace('/');
-    </script>
+    <main style="font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 2rem; line-height: 1.5;">
+      <h1>Page not found</h1>
+      <p>The page you requested is not available.</p>
+      <p><a href="/">Return to homepage</a></p>
+    </main>
   </body>
 </html>
