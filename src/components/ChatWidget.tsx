@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ChatKit, useChatKit } from '@openai/chatkit-react';
+import { StrataBotChat } from '@/components/chatkit/StrataBotChat';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
 
@@ -17,33 +17,6 @@ const getDefaultMinimizedState = () => {
 export function ChatWidget() {
   const { theme } = useTheme();
   const [isMinimized, setIsMinimized] = useState(getDefaultMinimizedState);
-
-  const { control } = useChatKit({
-    api: {
-      async getClientSecret(_existing) {
-        const res = await fetch('/api/chatkit/session', { method: 'POST' });
-
-        if (!res.ok) {
-          const errorBody = await res.text();
-          const traceId = res.headers.get('X-ChatKit-Trace-Id');
-          throw new Error(
-            `Unable to create ChatKit session (${res.status})${traceId ? ` [trace_id=${traceId}]` : ''}: ${errorBody}`
-          );
-        }
-
-        const { client_secret, trace_id } = await res.json();
-
-        if (!client_secret) {
-          throw new Error(
-            `ChatKit session response did not include client_secret${trace_id ? ` [trace_id=${trace_id}]` : ''}.`
-          );
-        }
-
-        return client_secret;
-      },
-    },
-    theme,
-  });
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
@@ -93,7 +66,7 @@ export function ChatWidget() {
           >
             StrataBot
           </div>
-          <ChatKit control={control} className="min-h-0 flex-1 w-full max-w-full" />
+          <StrataBotChat className="min-h-0 flex-1 w-full max-w-full" />
         </div>
       ) : null}
     </div>
