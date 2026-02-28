@@ -10,7 +10,7 @@ export const AiConsultancySessionPage = () => {
 
   return (
     <>
-      <Seo {...seo.pages.aiConsultancySession} />
+      <Seo {...seo.pages.aiConsultancySession} noindex />
       <Section
         title="AI Consultancy Session"
         intro="Use the full-page StrataBot assistant below for guided consultancy and planning."

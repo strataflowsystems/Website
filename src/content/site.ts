@@ -17,8 +17,6 @@ export const site = {
     { label: 'Case Studies', href: '/case-studies' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
-    { label: 'AI Consultancy Session', href: '/ai-consultancy-session' },
-    { label: 'StrataBot Testing', href: '/stratabot-testing' },
   ],
   hero: {
     heading: 'Spatially aware automation for operations teams that must prove every action.',
@@ -139,7 +137,7 @@ export const site = {
 };
 
 export const seo = {
-  baseUrl: 'https://www.strataflowsystems.com',
+  baseUrl: 'https://strataflowsystems.com',
   pages: {
     home: {
       title: 'Strataflow Systems | Spatially Aware Workflow Automation',

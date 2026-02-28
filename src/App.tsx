@@ -1,10 +1,11 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { PageLayout } from '@/components/layout/PageLayout';
 import { AboutPage } from '@/pages/AboutPage';
 import { AiConsultancySessionPage } from '@/pages/AiConsultancySessionPage';
 import { CaseStudiesPage } from '@/pages/CaseStudiesPage';
 import { ContactPage } from '@/pages/ContactPage';
 import { HomePage } from '@/pages/HomePage';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 import { PrivacyPage } from '@/pages/PrivacyPage';
 import { ServicesPage } from '@/pages/ServicesPage';
 import { StrataBotTestingPage } from '@/pages/StrataBotTestingPage';
@@ -22,7 +23,7 @@ const App = () => (
       <Route path="/stratabot-testing" element={<StrataBotTestingPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </PageLayout>
 );
