@@ -19,7 +19,7 @@ const serviceSchema = {
 
 export const ComplianceAuditTrailsPage = () => (
   <>
-    <Seo {...seo.pages.complianceAuditTrails} />
+    <Seo {...seo.pages.powerPlatformGovernance} />
     <StructuredData data={serviceSchema} />
     <Section title="Operations compliance & audit trails" headingLevel={1} intro="Move from reactive evidence gathering to always-on operational traceability.">
       <div className="rounded-xl border border-slate-200 bg-white p-8 shadow-card dark:border-slate-800 dark:bg-slate-900">

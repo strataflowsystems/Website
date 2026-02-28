@@ -15,12 +15,22 @@ const serviceListSchema = {
     },
     {
       '@type': 'Service',
-      name: 'Operations Compliance & Audit Trails',
-      url: 'https://strataflowsystems.com/services/operations-compliance-audit-trails',
+      name: 'Power Automate Consultancy',
+      url: 'https://strataflowsystems.com/services/power-automate-consultancy',
     },
     {
       '@type': 'Service',
-      name: 'Geospatial Field-Ops Workflow Integration',
+      name: 'SharePoint Workflow Automation',
+      url: 'https://strataflowsystems.com/services/sharepoint-workflow-automation',
+    },
+    {
+      '@type': 'Service',
+      name: 'Power Platform Governance',
+      url: 'https://strataflowsystems.com/services/power-platform-governance',
+    },
+    {
+      '@type': 'Service',
+      name: 'Geospatial Workflow Automation',
       url: 'https://strataflowsystems.com/services/geospatial-field-ops-workflows',
     },
   ],
@@ -31,7 +41,7 @@ export const ServicesPage = () => (
     <Seo {...seo.pages.services} />
     <StructuredData data={serviceListSchema} />
 
-    <Section title="Service packages" headingLevel={1} intro="Structured for measurable outcomes, clear governance, and executive-ready reporting.">
+    <Section title="Workflow automation service packages" headingLevel={1} intro="Structured for measurable outcomes, clear governance, and executive-ready reporting.">
       <div className="grid gap-4 lg:grid-cols-3">
         {site.services.map((service) => (
           <article key={service.name} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
@@ -46,27 +56,37 @@ export const ServicesPage = () => (
             </ul>
             <p className="mt-4 text-sm text-slate-700 dark:text-slate-300">{service.timeline}</p>
             <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">{service.bestFor}</p>
-            <Button href="/contact" className="mt-6 w-full">Book a Discovery Call</Button>
+            <Button href="/contact" className="mt-6 w-full">Get a free consultation</Button>
           </article>
         ))}
       </div>
     </Section>
 
-    <Section title="Dedicated service areas" intro="Explore focused service pages tailored to specific operational outcomes.">
-      <div className="grid gap-4 md:grid-cols-3">
+    <Section title="Dedicated service areas" intro="Explore focused pages aligned to high-intent search topics.">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
           <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Microsoft 365 workflow automation</h3>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Deploy scalable M365-native workflows that reduce manual admin and improve execution reliability.</p>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Automate approvals, forms, and operational records in Microsoft 365.</p>
           <Button href="/services/microsoft-365-workflow-automation" variant="secondary" className="mt-4 w-full">View details</Button>
         </article>
         <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Operations compliance & audit trails</h3>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Build governance-ready process controls with evidence capture designed into each workflow step.</p>
-          <Button href="/services/operations-compliance-audit-trails" variant="secondary" className="mt-4 w-full">View details</Button>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Power Automate consultancy UK</h3>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Design and manage low-code automation for repeatable business processes.</p>
+          <Button href="/services/power-automate-consultancy" variant="secondary" className="mt-4 w-full">View details</Button>
         </article>
         <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
-          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Geospatial field-ops integration</h3>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Unify location context with workflows to speed field decisions and improve traceability.</p>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">SharePoint workflow automation</h3>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Improve document control, approvals, and compliance history in SharePoint Online.</p>
+          <Button href="/services/sharepoint-workflow-automation" variant="secondary" className="mt-4 w-full">View details</Button>
+        </article>
+        <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Power Platform governance</h3>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Scale citizen development safely with CoE controls and policy frameworks.</p>
+          <Button href="/services/power-platform-governance" variant="secondary" className="mt-4 w-full">View details</Button>
+        </article>
+        <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Geospatial workflow automation</h3>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Embed location intelligence into M365 workflows for field operations.</p>
           <Button href="/services/geospatial-field-ops-workflows" variant="secondary" className="mt-4 w-full">View details</Button>
         </article>
       </div>
