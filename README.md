@@ -109,6 +109,10 @@ Set these variables in **Pages > Settings > Environment variables** (for Preview
 - `OPENAI_API_KEY`: your server-side OpenAI API key
 - `OPENAI_CHATKIT_WORKFLOW_ID`: ChatKit workflow id used for session creation
 
+Frontend toggle:
+
+- `VITE_ENABLE_CHATKIT=false`: disables the ChatKit UI in the browser. By default chat is enabled, so keep backend env vars configured before deploying.
+
 Optional (use when your key is project/org-scoped):
 
 - `OPENAI_PROJECT_ID`: OpenAI project id to send as `OpenAI-Project` header

@@ -69,7 +69,7 @@ export function ChatWidget() {
             </span>
           </div>
           <div className="relative z-10 min-h-0 flex-1">
-            <StrataBotChat className="min-h-0 h-full w-full max-w-full bg-transparent" />
+            <StrataBotChat key={theme} className="min-h-0 h-full w-full max-w-full bg-transparent" />
           </div>
         </div>
       ) : null}
