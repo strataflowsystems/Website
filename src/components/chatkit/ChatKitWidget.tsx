@@ -2,12 +2,13 @@ import { ChatKit, useChatKit } from '@openai/chatkit-react';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
 
-const getClientSecret = async (_currentClientSecret: string | null): Promise<string> => {
+const getClientSecret = async (currentClientSecret: string | null): Promise<string> => {
   const response = await fetch('/api/chatkit/session', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
+    body: JSON.stringify({ currentClientSecret }),
   });
 
   if (!response.ok) {

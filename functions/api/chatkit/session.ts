@@ -27,6 +27,9 @@ export const onRequestPost: PagesFunction<{
     deviceId = crypto.randomUUID();
   }
 
+  const requestBody = await request.json().catch(() => ({} as { currentClientSecret?: string | null }));
+  const currentClientSecret = requestBody?.currentClientSecret;
+
   const upstreamHeaders: Record<string, string> = {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${env.OPENAI_API_KEY}`,
@@ -41,14 +44,22 @@ export const onRequestPost: PagesFunction<{
     upstreamHeaders['OpenAI-Organization'] = env.OPENAI_ORG_ID;
   }
 
-  const res = await fetch('https://api.openai.com/v1/chatkit/sessions', {
-    method: 'POST',
-    headers: upstreamHeaders,
-    body: JSON.stringify({
-      workflow: { id: workflowId },
-      user: deviceId,
-    }),
-  });
+  const res = currentClientSecret
+    ? await fetch('https://api.openai.com/v1/chatkit/sessions/refresh', {
+        method: 'POST',
+        headers: upstreamHeaders,
+        body: JSON.stringify({
+          client_secret: currentClientSecret,
+        }),
+      })
+    : await fetch('https://api.openai.com/v1/chatkit/sessions', {
+        method: 'POST',
+        headers: upstreamHeaders,
+        body: JSON.stringify({
+          workflow: { id: workflowId },
+          user: deviceId,
+        }),
+      });
 
   const json = await res.json();
 

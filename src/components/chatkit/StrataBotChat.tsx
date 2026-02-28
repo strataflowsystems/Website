@@ -10,8 +10,14 @@ export const StrataBotChat = ({ className }: StrataBotChatProps) => {
 
   const { control } = useChatKit({
     api: {
-      async getClientSecret(_existing) {
-        const res = await fetch('/api/chatkit/session', { method: 'POST' });
+      async getClientSecret(currentClientSecret) {
+        const res = await fetch('/api/chatkit/session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ currentClientSecret }),
+        });
 
         if (!res.ok) {
           const errorBody = await res.text();
