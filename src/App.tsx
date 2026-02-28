@@ -12,7 +12,6 @@ const GeospatialFieldOpsPage = lazy(() => import('@/pages/GeospatialFieldOpsPage
 const CaseStudiesPage = lazy(() => import('@/pages/CaseStudiesPage').then((module) => ({ default: module.CaseStudiesPage })));
 const AboutPage = lazy(() => import('@/pages/AboutPage').then((module) => ({ default: module.AboutPage })));
 const ContactPage = lazy(() => import('@/pages/ContactPage').then((module) => ({ default: module.ContactPage })));
-const AiConsultancySessionPage = lazy(() => import('@/pages/AiConsultancySessionPage').then((module) => ({ default: module.AiConsultancySessionPage })));
 const StrataBotTestingPage = lazy(() => import('@/pages/StrataBotTestingPage').then((module) => ({ default: module.StrataBotTestingPage })));
 const PrivacyPage = lazy(() => import('@/pages/PrivacyPage').then((module) => ({ default: module.PrivacyPage })));
 const TermsPage = lazy(() => import('@/pages/TermsPage').then((module) => ({ default: module.TermsPage })));
@@ -32,7 +31,6 @@ const App = () => (
         <Route path="/case-studies" element={<CaseStudiesPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/ai-consultancy-session" element={<AiConsultancySessionPage />} />
         <Route path="/stratabot-testing" element={<StrataBotTestingPage />} />
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
