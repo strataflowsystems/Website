@@ -1,7 +1,6 @@
 import { Menu, Moon, Sun, X } from 'lucide-react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '@/assets/logo.svg';
 import { Button } from '@/components/ui/Button';
 import { site } from '@/content/site';
 import { useTheme } from '@/hooks/useTheme';
@@ -15,7 +14,11 @@ export const Header = () => {
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-slate-50/95 backdrop-blur dark:border-slate-800 dark:bg-[#0f1115]/95">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <NavLink to="/" className="flex items-center" aria-label="Go to homepage">
-          <img src={logo} alt="Strataflow Systems" className="h-auto w-auto max-h-10 max-w-[220px] object-contain transition duration-500 dark:brightness-0 dark:invert" />
+          <img
+            src="/Strataflow%20Logo%20tall%20Simple.svg"
+            alt="Strataflow Systems"
+            className="h-8 w-auto max-w-[150px] object-contain transition duration-500 sm:h-9 sm:max-w-[170px] md:h-10 md:max-w-[190px] lg:max-w-[210px] dark:brightness-0 dark:invert"
+          />
         </NavLink>
 
         <button
@@ -26,14 +29,14 @@ export const Header = () => {
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
 
-        <nav className="hidden items-center gap-5 md:flex">
+        <nav className="hidden items-center gap-4 md:ml-8 md:flex lg:gap-5">
           {site.nav.map((item) => (
             <NavLink
               key={item.href}
               to={item.href}
               className={({ isActive }) =>
                 cn(
-                  'text-sm text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100',
+                  'whitespace-nowrap text-sm text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100',
                   isActive && 'font-medium text-slate-950 dark:text-slate-100',
                 )
               }

@@ -30,43 +30,61 @@ export const onRequestPost: PagesFunction<{
   const requestBody = await request.json().catch(() => ({} as { currentClientSecret?: string | null }));
   const currentClientSecret = requestBody?.currentClientSecret;
 
-  const upstreamHeaders: Record<string, string> = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${env.OPENAI_API_KEY}`,
-    'OpenAI-Beta': 'chatkit_beta=v1',
+  const buildUpstreamHeaders = (includeScopeHeaders: boolean) => {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${env.OPENAI_API_KEY}`,
+      'OpenAI-Beta': 'chatkit_beta=v1',
+    };
+
+    if (includeScopeHeaders && env.OPENAI_PROJECT_ID) {
+      headers['OpenAI-Project'] = env.OPENAI_PROJECT_ID;
+    }
+
+    if (includeScopeHeaders && env.OPENAI_ORG_ID) {
+      headers['OpenAI-Organization'] = env.OPENAI_ORG_ID;
+    }
+
+    return headers;
   };
 
-  if (env.OPENAI_PROJECT_ID) {
-    upstreamHeaders['OpenAI-Project'] = env.OPENAI_PROJECT_ID;
+  const createOrRefreshSession = (headers: Record<string, string>) =>
+    currentClientSecret
+      ? fetch('https://api.openai.com/v1/chatkit/sessions/refresh', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            client_secret: currentClientSecret,
+          }),
+        })
+      : fetch('https://api.openai.com/v1/chatkit/sessions', {
+          method: 'POST',
+          headers,
+          body: JSON.stringify({
+            workflow: { id: workflowId },
+            user: deviceId,
+          }),
+        });
+
+  let res = await createOrRefreshSession(buildUpstreamHeaders(true));
+  let json = await res.json();
+  let usedScopeHeaders = Boolean(env.OPENAI_PROJECT_ID || env.OPENAI_ORG_ID);
+
+  if (!res.ok && (res.status === 401 || res.status === 403) && usedScopeHeaders) {
+    const fallbackRes = await createOrRefreshSession(buildUpstreamHeaders(false));
+
+    if (fallbackRes.ok) {
+      res = fallbackRes;
+      json = await fallbackRes.json();
+      usedScopeHeaders = false;
+    }
   }
-
-  if (env.OPENAI_ORG_ID) {
-    upstreamHeaders['OpenAI-Organization'] = env.OPENAI_ORG_ID;
-  }
-
-  const res = currentClientSecret
-    ? await fetch('https://api.openai.com/v1/chatkit/sessions/refresh', {
-        method: 'POST',
-        headers: upstreamHeaders,
-        body: JSON.stringify({
-          client_secret: currentClientSecret,
-        }),
-      })
-    : await fetch('https://api.openai.com/v1/chatkit/sessions', {
-        method: 'POST',
-        headers: upstreamHeaders,
-        body: JSON.stringify({
-          workflow: { id: workflowId },
-          user: deviceId,
-        }),
-      });
-
-  const json = await res.json();
 
   if (!res.ok) {
     const base = {
       error: json,
       openai_request_id: res.headers.get('x-request-id') || null,
+      attempted_scope_header_fallback: Boolean(env.OPENAI_PROJECT_ID || env.OPENAI_ORG_ID),
     };
 
     if (res.status === 401 || res.status === 403) {
@@ -74,7 +92,7 @@ export const onRequestPost: PagesFunction<{
         JSON.stringify({
           ...base,
           hint:
-            'Verify OPENAI_API_KEY can access the ChatKit workflow project. If your key is scoped to a specific project, set OPENAI_PROJECT_ID. Ensure OPENAI_CHATKIT_WORKFLOW_ID points to an existing workflow in that same project.',
+            'Verify OPENAI_API_KEY can access the ChatKit workflow project. Ensure OPENAI_CHATKIT_WORKFLOW_ID points to an existing workflow in that same project. If you configured OPENAI_PROJECT_ID/OPENAI_ORG_ID, verify they match the key scope.',
         }),
         {
           status: res.status,
