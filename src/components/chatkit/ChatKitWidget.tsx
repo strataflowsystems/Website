@@ -1,6 +1,7 @@
 import { ChatKit, useChatKit } from '@openai/chatkit-react';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
+import { getChatKitTheme } from '@/components/chatkit/chatTheme';
 
 const getClientSecret = async (currentClientSecret: string | null): Promise<string> => {
   const response = await fetch('/api/chatkit/session', {
@@ -26,15 +27,7 @@ const getClientSecret = async (currentClientSecret: string | null): Promise<stri
 
 export const ChatKitWidget = () => {
   const { theme } = useTheme();
-  const chatTheme = {
-    colorScheme: theme,
-    color: {
-      surface: {
-        background: theme === 'dark' ? '#0f1115' : '#f8fafc',
-        foreground: theme === 'dark' ? '#f1f5f9' : '#0f172a',
-      },
-    },
-  } as const;
+  const chatTheme = getChatKitTheme(theme);
 
   const chatKit = useChatKit({
     api: {

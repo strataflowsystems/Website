@@ -1,5 +1,6 @@
 import { ChatKit, useChatKit } from '@openai/chatkit-react';
 import { useTheme } from '@/hooks/useTheme';
+import { getChatKitTheme } from '@/components/chatkit/chatTheme';
 
 type StrataBotChatProps = {
   className?: string;
@@ -7,15 +8,7 @@ type StrataBotChatProps = {
 
 export const StrataBotChat = ({ className }: StrataBotChatProps) => {
   const { theme } = useTheme();
-  const chatTheme = {
-    colorScheme: theme,
-    color: {
-      surface: {
-        background: theme === 'dark' ? '#0f1115' : '#f8fafc',
-        foreground: theme === 'dark' ? '#f1f5f9' : '#0f172a',
-      },
-    },
-  } as const;
+  const chatTheme = getChatKitTheme(theme);
 
   const { control } = useChatKit({
     api: {
