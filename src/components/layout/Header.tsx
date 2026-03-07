@@ -30,14 +30,14 @@ export const Header = () => {
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
 
-        <nav className="hidden items-center gap-5 md:flex">
+        <nav className="hidden flex-nowrap items-center gap-5 md:flex">
           {site.nav.map((item) => (
             <NavLink
               key={item.href}
               to={item.href}
               className={({ isActive }) =>
                 cn(
-                  'text-sm text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100',
+                  'text-sm whitespace-nowrap text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100',
                   isActive && 'font-medium text-slate-950 dark:text-slate-100',
                 )
               }
