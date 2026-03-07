@@ -50,7 +50,7 @@ export const HomePage = () => (
       </ul>
     </Section>
 
-    <Section title="Why teams choose Strataflow" intro="Microsoft 365 workflow automation built for operational outcomes, not just technical delivery.">
+    <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Why teams choose Strataflow" intro="Microsoft 365 workflow automation built for operational outcomes, not just technical delivery.">
       <div className="grid gap-4 md:grid-cols-3">
         {site.pillars.map((pillar) => (
           <article key={pillar.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
@@ -72,7 +72,7 @@ export const HomePage = () => (
       </div>
     </Section>
 
-    <Section title="Industry focus">
+    <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Industry focus">
       <div className="grid gap-4 md:grid-cols-3">
         {site.industries.map((industry) => (
           <div key={industry.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
@@ -96,7 +96,7 @@ export const HomePage = () => (
       </div>
     </Section>
 
-    <Section title="Capabilities across Microsoft 365 and Power Platform">
+    <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Capabilities across Microsoft 365 and Power Platform">
       <ul className="grid gap-3 md:grid-cols-2">
         {site.capabilities.map((item) => (
           <li key={item} className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-4 text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
@@ -115,7 +115,7 @@ export const HomePage = () => (
       </div>
     </Section>
 
-    <Section title="Chat with our team" intro="Use the chat bubble in the bottom-right corner to ask questions and get quick guidance via our assistant.">
+    <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Chat with our team" intro="Use the chat bubble in the bottom-right corner to ask questions and get quick guidance via our assistant.">
       <p className="text-slate-600 dark:text-slate-400">The assistant is available on every page except contact, where we minimize distractions for form completion.</p>
     </Section>
 

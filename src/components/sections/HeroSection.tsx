@@ -17,8 +17,15 @@ export const HeroSection = () => (
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href={site.primaryCta.href} onClick={() => trackEvent('cta_click', { cta: 'hero_primary' })}>{site.primaryCta.label}</Button>
             <Button href={site.secondaryCtas[0].href} variant="secondary" onClick={() => trackEvent('deck_download_click', { cta: 'hero_secondary' })}>{site.secondaryCtas[0].label}</Button>
-            <Button href={site.secondaryCtas[1].href} variant="ghost" onClick={() => trackEvent('cta_click', { cta: 'hero_case_studies' })}>{site.secondaryCtas[1].label}</Button>
           </div>
+          <a
+            href={site.secondaryCtas[1].href}
+            className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-600 transition hover:text-accent-500"
+            onClick={() => trackEvent('cta_click', { cta: 'hero_case_studies' })}
+          >
+            {site.secondaryCtas[1].label}
+            <ArrowRight size={14} />
+          </a>
         </Reveal>
       </div>
       <Reveal delay={0.15}>
