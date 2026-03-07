@@ -15,16 +15,16 @@ export const AnnouncementBanner = () => {
       animate={reduce ? {} : { opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: 'easeOut' }}
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-2 text-sm text-emerald-950 dark:text-emerald-100 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-2">
+      <div className="mx-auto flex max-w-6xl items-start justify-between gap-3 px-6 py-2 text-sm text-emerald-950 dark:text-emerald-100 sm:items-center">
+        <div className="flex min-w-0 flex-1 items-start gap-2 sm:items-center">
           <motion.span
             className="inline-block h-2 w-2 rounded-full bg-emerald-700 dark:bg-emerald-400"
             animate={reduce ? {} : { opacity: [0.4, 1, 0.4], scale: [1, 1.15, 1] }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
           />
-          <p className="leading-tight">{site.announcement.text}</p>
+          <p className="min-w-0 leading-tight">{site.announcement.text}</p>
         </div>
-        <a className="inline-flex items-center gap-1.5 font-medium text-emerald-900 transition hover:text-emerald-700 dark:text-emerald-200 dark:hover:text-emerald-100" href={site.announcement.href}>
+        <a className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap font-medium text-emerald-900 transition hover:text-emerald-700 dark:text-emerald-200 dark:hover:text-emerald-100" href={site.announcement.href}>
           Learn more
           <ArrowRight size={16} />
         </a>
