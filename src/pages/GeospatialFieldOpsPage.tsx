@@ -19,16 +19,16 @@ export const GeospatialFieldOpsPage = () => (
   <>
     <Seo {...seo.pages.geospatialFieldOps} />
     <StructuredData data={{ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqItems.map((item) => ({ '@type': 'Question', name: item.q, acceptedAnswer: { '@type': 'Answer', text: item.a } })) }} />
-    <Section title="Spatially-aware workflow automation" headingLevel={1} intro="Combine GIS data with Microsoft 365 workflows for smarter operations.">
+    <Section title="Spatially-aware workflow automation" headingLevel={1} intro="Combine GIS context with Microsoft 365 workflows to improve traceability, reporting confidence, and field decision speed.">
       <div className="space-y-6 rounded-xl border border-slate-200 bg-white p-8 shadow-card dark:border-slate-800 dark:bg-slate-900">
         <p className="text-slate-600 dark:text-slate-400">
-          Strataflow uniquely combines location intelligence with Microsoft 365 automation. Work orders, inspections, and site records can include location context and geotagged evidence automatically,
-          making field decisions faster and easier to validate.
+          Strataflow connects spatial context to operational workflows so field and office teams work from the same operational state. Permits, inspections, job packs, and site records can capture geotagged evidence as work happens, improving traceability and reducing reporting disputes.
         </p>
         <ul className="list-disc space-y-2 pl-5 text-slate-600 dark:text-slate-400">
-          <li>Location-aware forms, routing, and assignment logic</li>
-          <li>Field-to-office synchronization with complete action history</li>
-          <li>Geotagged evidence trails for compliance and reporting</li>
+          <li>Location-aware forms, routing, and assignment logic across multi-site delivery</li>
+          <li>Field-to-office synchronization with complete action history and asset-linked status</li>
+          <li>Geotagged evidence trails that strengthen compliance reporting and decision quality</li>
+          <li>Clearer traceability that supports faster decisions and fewer handover disputes</li>
         </ul>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button href="/contact">Explore Spatial Workflow Solutions</Button>

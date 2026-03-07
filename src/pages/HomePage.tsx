@@ -52,13 +52,37 @@ export const HomePage = () => (
     </Section>
 
     <Section title="The operational bottleneck" headingLevel={2}>
-      <ul className="grid gap-3 md:grid-cols-3">
+      <ul className="grid gap-3 md:grid-cols-2">
         {site.problem.map((item) => (
           <li key={item} className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
             {item}
           </li>
         ))}
       </ul>
+    </Section>
+
+
+
+    <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Where Strataflow fits best" intro="We are most effective in operational environments where delivery pace, governance, and evidence quality all matter.">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {site.fitSignals.map((item) => (
+          <article key={item.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{item.title}</h3>
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </Section>
+
+    <Section title="Architecture approach" intro="Operational systems architecture that remains commercially practical and maintainable.">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {site.architectureApproach.map((item) => (
+          <article key={item.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{item.title}</h3>
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
+          </article>
+        ))}
+      </div>
     </Section>
 
     <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Why teams choose Strataflow" intro="Workflow automation and AI implementation built for operational outcomes, not just technical delivery.">

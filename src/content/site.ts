@@ -20,9 +20,9 @@ export const site = {
     { label: 'StrataBot Testing', href: '/stratabot-testing' },
   ],
   hero: {
-    heading: 'Workflow Automation & AI Implementation for Operations Teams',
+    heading: 'Operational systems, workflow automation, and AI governance for complex delivery environments',
     subheading:
-      'Strataflow delivers spatially-aware automation and AI implementation with evidence trails built in-so delivery speed, compliance, and governance improve together.',
+      'Strataflow designs governed operational systems using Microsoft 365, automation, structured data, and spatially-aware workflows so delivery speed, visibility, and auditability improve together.',
     proof: 'Trusted by operations-heavy teams in infrastructure, logistics, and regulated services. Typical outcomes include 20–30% faster cycle times.',
     highlights: ['20–30% faster cycle times', 'Up to 40% fewer missing approvals', 'Audit prep reduced from days to hours'],
   },
@@ -32,9 +32,12 @@ export const site = {
     { metric: 'Hours not days', label: 'Typical audit prep turnaround' },
   ],
   problem: [
-    'Critical operational work is scattered across email, chats, spreadsheets, and disconnected trackers.',
-    'Teams execute well but cannot consistently prove what happened, when, where, and by whom.',
-    'Audit and governance requests become reactive fire drills instead of routine reporting.',
+    'Teams duplicate entry across email, spreadsheets, SharePoint lists, and specialist systems.',
+    'Approvals happen in practice, but there is no reliable record of who approved what and when.',
+    'Registers, trackers, permits, and inspection logs are fragmented across teams and sites.',
+    'Field work is often disconnected from office reporting, creating delays and avoidable disputes.',
+    'Documents exist, but they are not linked to clear operational status or control points.',
+    'Compliance evidence is collected manually after the fact instead of captured during execution.',
   ],
   pillars: [
     {
@@ -55,6 +58,54 @@ export const site = {
     { title: 'Blueprint', description: 'Design target workflows, controls, and evidence ledger.' },
     { title: 'Deploy', description: 'Build with low-code automation, secure data model, and training.' },
     { title: 'Optimize', description: 'Monitor outcomes, tune process logic, and mature governance.' },
+  ],
+  fitSignals: [
+    {
+      title: 'Field operations teams',
+      description: 'Daily work spans office planners, site teams, and subcontractors that need one governed workflow.',
+    },
+    {
+      title: 'Infrastructure and utilities delivery',
+      description: 'Programmes with permits, inspections, job packs, and multi-site delivery controls.',
+    },
+    {
+      title: 'Compliance-heavy workflows',
+      description: 'Environments where every approval, handoff, and exception needs a defensible evidence trail.',
+    },
+    {
+      title: 'Document-driven approvals and registers',
+      description: 'Teams managing document control, revision history, and approval-led release processes.',
+    },
+    {
+      title: 'Fragmented office and field coordination',
+      description: 'Operations with disconnected systems, duplicated updates, and unclear ownership between teams.',
+    },
+    {
+      title: 'Organisations needing provable operational evidence',
+      description: 'Leaders who need to answer audit, compliance, and performance questions with confidence.',
+    },
+  ],
+  architectureApproach: [
+    {
+      title: 'Microsoft 365 as the operational layer',
+      description: 'SharePoint, Teams, and Lists provide a familiar human-facing layer for controlled execution.',
+    },
+    {
+      title: 'Automation orchestrates across systems',
+      description: 'Power Automate coordinates approvals, handoffs, alerts, and updates between operational tools.',
+    },
+    {
+      title: 'Evidence captured by default',
+      description: 'Timestamps, decisions, documents, and field evidence are logged automatically as work progresses.',
+    },
+    {
+      title: 'Structured data drives visibility',
+      description: 'Operational state is modelled in clear data structures so reporting and control become routine.',
+    },
+    {
+      title: 'Pragmatic and maintainable by design',
+      description: 'Architecture choices stay practical so internal teams can run, support, and evolve the system safely.',
+    },
   ],
   industries: [
     { title: 'Infrastructure & Field Services', description: 'Work order governance, inspections, and traceability.' },
@@ -92,33 +143,84 @@ export const site = {
       bestFor: 'Best for scaling automation safely across departments.',
     },
   ],
+  starterOffers: [
+    {
+      name: 'Automation Opportunity Audit',
+      for: 'Operations leaders who know manual effort is high but need clear prioritisation.',
+      deliverables: 'Current-state workflow assessment, risk hotspots, and ranked automation opportunities.',
+      outputs: 'Prioritised opportunity backlog, business case ranges, and recommended first implementation scope.',
+    },
+    {
+      name: 'Process and Controls Architecture Review',
+      for: 'Teams with existing workflows that need stronger governance, control, and auditability.',
+      deliverables: 'Architecture and control review across approvals, data handling, and evidence capture.',
+      outputs: 'Target control model, remediation actions, and implementation roadmap.',
+    },
+    {
+      name: 'Microsoft 365 Operations Build Sprint',
+      for: 'Programmes needing a fast, governed build for a critical workflow in operations.',
+      deliverables: 'Scoped build sprint covering forms, workflow automation, registers, and reporting views.',
+      outputs: 'Production-ready workflow release, test evidence, and handover documentation.',
+    },
+    {
+      name: 'AI Readiness and Governance Review',
+      for: 'Organisations moving from AI interest to controlled implementation in operational processes.',
+      deliverables: 'Use-case selection, governance guardrails, risk controls, and data handling design.',
+      outputs: 'AI readiness scorecard, phased rollout plan, and implementation control requirements.',
+    },
+  ],
   engagementModel: [
     'Fixed-scope engagements for diagnostics and build phases.',
     'Retainer options for ongoing governance, optimization, and support.',
     'Blended model available for multi-site rollouts and phased transformations.',
   ],
+  aiGovernanceOffer: {
+    title: 'AI implementation for operational environments',
+    intro:
+      'Strataflow helps teams move from broad AI interest to controlled delivery by selecting practical use cases and applying clear governance from day one.',
+    areas: ['AI readiness assessment', 'Use case selection tied to operational outcomes', 'Governance, risk, and control design', 'Data handling and information boundaries', 'Safe rollout with monitoring and staged adoption'],
+  },
+  founderPerspective: {
+    title: 'Built from live operations experience',
+    body:
+      'Strataflow was shaped by practical exposure to operational breakdowns: manual workflows under pressure, unclear approvals, disconnected systems, audit evidence gaps, and field-office misalignment. The operating model reflects those realities and focuses on reliable execution, not theory.',
+  },
+  deliveryAssurance: [
+    'Clear scope definition before build starts',
+    'Pragmatic architecture decisions linked to operational constraints',
+    'Testing with real scenarios before rollout',
+    'Controlled deployment with change governance',
+    'Clean documentation and structured handover',
+    'Iterative optimisation after go-live',
+  ],
   caseStudies: [
     {
       title: 'Regional Utility Operations Team',
       clientType: 'Infrastructure operator (anonymized)',
-      challenge: 'Work approvals were delayed by fragmented handoffs and inconsistent records.',
-      approach: 'Introduced M365 workflow orchestration with structured evidence capture and exception routing.',
+      challenge: 'Approvals were happening across email and spreadsheets with no consistent record of who approved what, when, or against which permit package.',
+      approach: 'Implemented a Microsoft 365 workflow layer linking permit requests, job packs, and approval routing with exception escalation.',
+      evidenceImprovement: 'Each approval, document revision, and field inspection update was automatically timestamped and linked to the job record.',
+      outcomeSummary: 'Cycle times improved while audit and compliance reviews shifted from manual reconstruction to routine reporting.',
       outcomes: ['20–30% faster cycle time', 'Up to 40% fewer missing approvals', 'Audit prep reduced from days to hours'],
       stack: 'SharePoint, Power Apps, Power Automate, Teams',
     },
     {
       title: 'Multi-Site Distribution Network',
       clientType: 'Logistics and distribution group (anonymized)',
-      challenge: 'Site-level process variance created reporting blind spots.',
-      approach: 'Standardized operational playbooks with location-aware forms and control checkpoints.',
+      challenge: 'Site teams used different trackers for inspections and exceptions, leaving leadership without a consistent operational view.',
+      approach: 'Standardised location-aware workflows across sites with structured registers, inspection checkpoints, and controlled exception handling.',
+      evidenceImprovement: 'Evidence logs were normalised so each site recorded the same control events and supporting files.',
+      outcomeSummary: 'Cross-site comparison became reliable, with faster exception resolution and steadier management reporting.',
       outcomes: ['15–25% reduction in exception handling time', 'Consistent cross-site evidence logs', 'Leadership reporting cadence stabilized'],
       stack: 'Power Platform, Microsoft Lists, Teams, Power BI',
     },
     {
       title: 'Regulated Services Program Office',
       clientType: 'Regulated services organization (anonymized)',
-      challenge: 'High documentation burden and slow response to compliance inquiries.',
-      approach: 'Implemented evidence ledger model with automated document retention and approval history.',
+      challenge: 'Document control activity was high, but operational status and approval history were difficult to prove during compliance checks.',
+      approach: 'Designed a governed workflow model with document state controls, automated retention actions, and approval traceability.',
+      evidenceImprovement: 'Compliance evidence was captured during execution rather than assembled manually after requests.',
+      outcomeSummary: 'Audit response speed improved and programme teams reduced time spent on reactive documentation work.',
       outcomes: ['Up to 35% less manual documentation effort', 'Traceability across key controls', 'Improved internal audit confidence'],
       stack: 'SharePoint Premium, Purview, Power Automate, Dataverse',
     },
