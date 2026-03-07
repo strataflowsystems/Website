@@ -17,7 +17,20 @@ export const HeroSection = () => (
           <div className="mt-8 flex flex-wrap gap-3">
             <Button href={site.primaryCta.href} onClick={() => trackEvent('cta_click', { cta: 'hero_primary' })}>{site.primaryCta.label}</Button>
             <Button href={site.secondaryCtas[0].href} variant="secondary" onClick={() => trackEvent('deck_download_click', { cta: 'hero_secondary' })}>{site.secondaryCtas[0].label}</Button>
-            <Button href={site.secondaryCtas[1].href} variant="ghost" onClick={() => trackEvent('cta_click', { cta: 'hero_case_studies' })}>{site.secondaryCtas[1].label}</Button>
+          </div>
+          <a
+            href={site.secondaryCtas[1].href}
+            className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-600 transition hover:text-accent-500"
+            onClick={() => trackEvent('cta_click', { cta: 'hero_case_studies' })}
+          >
+            {site.secondaryCtas[1].label}
+            <ArrowRight size={14} />
+          </a>
+
+          <div className="mt-6 grid gap-2 text-sm sm:grid-cols-3">
+            {site.hero.highlights.map((item) => (
+              <div key={item} className="rounded-lg border border-slate-200 bg-white/70 px-3 py-2 text-slate-700 dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300">{item}</div>
+            ))}
           </div>
         </Reveal>
       </div>
