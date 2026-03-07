@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { site } from '@/content/site';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
+import logo from '@/assets/logo.svg';
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -13,11 +14,11 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-slate-50/95 backdrop-blur dark:border-slate-800 dark:bg-[#0f1115]/95">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <NavLink to="/" className="flex items-center" aria-label="Go to homepage">
+        <NavLink to="/" className="flex shrink-0 items-center" aria-label="Go to homepage">
           <img
-            src="/Strataflow%20Logo%20tall%20Simple.svg"
+            src={logo}
             alt="Strataflow Systems"
-            className="h-auto w-auto max-h-8 max-w-[140px] object-contain transition duration-500 sm:max-h-9 sm:max-w-[180px] md:max-h-10 md:max-w-[220px] lg:max-h-11 lg:max-w-[240px] dark:brightness-0 dark:invert"
+            className="h-7 w-auto object-contain transition duration-500 sm:h-8 md:h-9 lg:h-10 dark:brightness-0 dark:invert"
           />
         </NavLink>
 
