@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button';
 import { site } from '@/content/site';
 import { useTheme } from '@/hooks/useTheme';
 import { cn } from '@/lib/cn';
+import logo from '@/assets/logo.svg';
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
@@ -13,30 +14,30 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-slate-200 bg-slate-50/95 backdrop-blur dark:border-slate-800 dark:bg-[#0f1115]/95">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <NavLink to="/" className="flex items-center" aria-label="Go to homepage">
+        <NavLink to="/" className="flex shrink-0 items-center" aria-label="Go to homepage">
           <img
-            src="/Strataflow%20Logo%20tall%20Simple.svg"
+            src={logo}
             alt="Strataflow Systems"
-            className="h-auto w-auto max-h-8 max-w-[140px] object-contain transition duration-500 sm:max-h-9 sm:max-w-[180px] md:max-h-10 md:max-w-[220px] lg:max-h-11 lg:max-w-[240px] dark:brightness-0 dark:invert"
+            className="h-7 w-auto object-contain transition duration-500 sm:h-8 md:h-9 lg:h-10 dark:brightness-0 dark:invert"
           />
         </NavLink>
 
         <button
-          className="rounded-md p-2 text-slate-700 dark:text-slate-300 md:hidden"
+          className="rounded-md p-2 text-slate-700 dark:text-slate-300 xl:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
 
-        <nav className="hidden items-center gap-5 md:flex">
+        <nav className="hidden flex-nowrap items-center gap-5 xl:flex">
           {site.nav.map((item) => (
             <NavLink
               key={item.href}
               to={item.href}
               className={({ isActive }) =>
                 cn(
-                  'text-sm text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100',
+                  'text-sm whitespace-nowrap text-slate-600 transition hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100',
                   isActive && 'font-medium text-slate-950 dark:text-slate-100',
                 )
               }
@@ -76,7 +77,7 @@ export const Header = () => {
       </div>
 
       {open && (
-        <nav className="border-t border-slate-200 bg-white px-6 py-4 dark:border-slate-800 dark:bg-slate-900 md:hidden">
+        <nav className="border-t border-slate-200 bg-white px-6 py-4 dark:border-slate-800 dark:bg-slate-900 xl:hidden">
           <div className="flex flex-col gap-4">
             {site.nav.map((item) => (
               <NavLink key={item.href} to={item.href} className="text-slate-700 dark:text-slate-300" onClick={() => setOpen(false)}>
