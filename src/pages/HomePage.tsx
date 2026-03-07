@@ -1,4 +1,4 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, ChevronDown } from 'lucide-react';
 import { FinalCtaBand } from '@/components/sections/FinalCtaBand';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { Section } from '@/components/ui/Section';
@@ -40,6 +40,17 @@ export const HomePage = () => (
     <StructuredData data={[orgSchema, websiteSchema, faqSchema]} />
     <HeroSection />
 
+    <Section className="pt-8" title="Outcomes snapshot" intro="Conservative performance deltas from recent operations-focused engagements.">
+      <div className="grid gap-4 md:grid-cols-3">
+        {site.outcomesSnapshot.map((item) => (
+          <article key={item.label} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
+            <p className="text-3xl font-semibold tracking-tight text-accent-600">{item.metric}</p>
+            <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{item.label}</p>
+          </article>
+        ))}
+      </div>
+    </Section>
+
     <Section title="The operational bottleneck" headingLevel={2}>
       <ul className="grid gap-3 md:grid-cols-3">
         {site.problem.map((item) => (
@@ -50,7 +61,7 @@ export const HomePage = () => (
       </ul>
     </Section>
 
-    <Section title="Why teams choose Strataflow" intro="Microsoft 365 workflow automation built for operational outcomes, not just technical delivery.">
+    <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Why teams choose Strataflow" intro="Workflow automation and AI implementation built for operational outcomes, not just technical delivery.">
       <div className="grid gap-4 md:grid-cols-3">
         {site.pillars.map((pillar) => (
           <article key={pillar.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
@@ -72,7 +83,7 @@ export const HomePage = () => (
       </div>
     </Section>
 
-    <Section title="Industry focus">
+    <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Industry focus">
       <div className="grid gap-4 md:grid-cols-3">
         {site.industries.map((industry) => (
           <div key={industry.title} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
@@ -96,7 +107,7 @@ export const HomePage = () => (
       </div>
     </Section>
 
-    <Section title="Capabilities across Microsoft 365 and Power Platform">
+    <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Capabilities across automation, AI, and data operations">
       <ul className="grid gap-3 md:grid-cols-2">
         {site.capabilities.map((item) => (
           <li key={item} className="flex items-start gap-3 rounded-lg border border-slate-200 bg-white p-4 text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
@@ -109,21 +120,24 @@ export const HomePage = () => (
 
     <Section title="Trust signals" intro="Built on Microsoft cloud patterns with governance and audit readiness designed in.">
       <div className="grid gap-3 md:grid-cols-3">
-        <div className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">Microsoft 365-native architecture</div>
-        <div className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">Power Platform governance and CoE controls</div>
+        <div className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">Cross-platform automation architecture</div>
+        <div className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">Governance and CoE controls for automation at scale</div>
         <div className="rounded-lg border border-slate-200 bg-white p-5 text-slate-700 shadow-card dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">Evidence trails for approvals, files, and location context</div>
       </div>
     </Section>
 
-    <Section title="Chat with our team" intro="Use the chat bubble in the bottom-right corner to ask questions and get quick guidance via our assistant.">
+    <Section className="bg-slate-100/70 dark:bg-slate-900/40" title="Chat with our team" intro="Use the chat bubble in the bottom-right corner to ask questions and get quick guidance via our assistant.">
       <p className="text-slate-600 dark:text-slate-400">The assistant is available on every page except contact, where we minimize distractions for form completion.</p>
     </Section>
 
     <Section title="FAQ">
       <div className="space-y-3">
         {site.faqs.map((faq) => (
-          <details key={faq.q} className="rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
-            <summary className="cursor-pointer font-medium text-slate-900 dark:text-slate-100">{faq.q}</summary>
+          <details key={faq.q} className="group rounded-lg border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-medium text-slate-900 [&::-webkit-details-marker]:hidden dark:text-slate-100">
+              <span>{faq.q}</span>
+              <ChevronDown className="h-4 w-4 text-slate-500 transition group-open:rotate-180" />
+            </summary>
             <p className="mt-3 text-slate-600 dark:text-slate-400">{faq.a}</p>
           </details>
         ))}

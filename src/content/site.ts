@@ -8,7 +8,7 @@ export const site = {
   ],
   announcement: {
     enabled: true,
-    text: 'Now booking Q2 delivery windows for Microsoft 365 and Power Platform automation in the UK.',
+    text: 'Now booking Q2 delivery windows for workflow automation and AI implementation in the UK.',
     href: '/contact',
   },
   nav: [
@@ -20,11 +20,17 @@ export const site = {
     { label: 'StrataBot Testing', href: '/stratabot-testing' },
   ],
   hero: {
-    heading: 'Microsoft 365 Workflow Automation for Operations Teams',
+    heading: 'Workflow Automation & AI Implementation for Operations Teams',
     subheading:
-      'Strataflow delivers spatially-aware SharePoint and Power Automate solutions with evidence trails built in-so delivery speed, compliance, and governance improve together.',
+      'Strataflow delivers spatially-aware automation and AI implementation with evidence trails built in-so delivery speed, compliance, and governance improve together.',
     proof: 'Trusted by operations-heavy teams in infrastructure, logistics, and regulated services. Typical outcomes include 20–30% faster cycle times.',
+    highlights: ['20–30% faster cycle times', 'Up to 40% fewer missing approvals', 'Audit prep reduced from days to hours'],
   },
+  outcomesSnapshot: [
+    { metric: '20–30%', label: 'Faster workflow cycle times' },
+    { metric: '40%', label: 'Fewer missing approvals in key flows' },
+    { metric: 'Hours not days', label: 'Typical audit prep turnaround' },
+  ],
   problem: [
     'Critical operational work is scattered across email, chats, spreadsheets, and disconnected trackers.',
     'Teams execute well but cannot consistently prove what happened, when, where, and by whom.',
@@ -33,7 +39,7 @@ export const site = {
   pillars: [
     {
       title: 'Workflow Clarity',
-      description: 'Map and simplify operational workflows into clear, role-based flows inside Microsoft 365 and Power Platform.',
+      description: 'Map and simplify operational workflows into clear, role-based automations across your existing systems.',
     },
     {
       title: 'Evidence by Default',
@@ -56,10 +62,10 @@ export const site = {
     { title: 'Regulated Operations', description: 'Evidence-ready process execution for compliance-heavy teams.' },
   ],
   capabilities: [
-    'Microsoft 365-first architecture',
-    'Power Automate consultancy and implementation',
-    'SharePoint workflow automation and document control',
-    'Power Platform governance and CoE setup',
+    'Automation architecture aligned to your existing stack',
+    'AI implementation and workflow orchestration',
+    'Document control and process automation',
+    'Automation governance and CoE enablement',
     'Evidence-led activity and decision trails',
     'Spatial context mapping for field operations',
   ],
@@ -96,7 +102,7 @@ export const site = {
       title: 'Regional Utility Operations Team',
       clientType: 'Infrastructure operator (anonymized)',
       challenge: 'Work approvals were delayed by fragmented handoffs and inconsistent records.',
-      approach: 'Introduced M365 workflow orchestration with structured evidence capture and exception routing.',
+      approach: 'Introduced automation orchestration with structured evidence capture and exception routing.',
       outcomes: ['20–30% faster cycle time', 'Up to 40% fewer missing approvals', 'Audit prep reduced from days to hours'],
       stack: 'SharePoint, Power Apps, Power Automate, Teams',
     },
@@ -119,16 +125,16 @@ export const site = {
   ],
   faqs: [
     {
-      q: 'What is spatially-aware workflow automation?',
-      a: 'Spatially-aware automation means workflows capture where work happens. Strataflow combines location context with Microsoft 365 process logic and evidence trails.',
+      q: 'What is spatially-aware automation?',
+      a: 'Spatially-aware automation means workflows capture where work happens. Strataflow combines location context with process logic and evidence trails.',
     },
     {
       q: 'Who uses Strataflow services?',
       a: 'Our projects are designed for operations-heavy teams in utilities, telecoms, infrastructure, logistics, and public-sector programs.',
     },
     {
-      q: 'Is Power Automate secure in Microsoft 365?',
-      a: 'Yes, with the right governance. We apply DLP policies, role-based access, and monitored deployment standards to keep automation secure and reliable.',
+      q: 'Can automation be implemented securely?',
+      a: 'Yes, with the right governance. We apply DLP-style controls, role-based access, and monitored deployment standards to keep automation secure and reliable.',
     },
     {
       q: 'How quickly can we see value?',
@@ -141,54 +147,54 @@ export const seo = {
   baseUrl: 'https://strataflowsystems.com',
   pages: {
     home: {
-      title: 'Strataflow Systems – Microsoft 365 Workflow Automation with Built-in Evidence (UK)',
-      description: 'Microsoft 365 workflow automation and Power Automate consultancy for UK operations teams. Build faster processes with audit-ready evidence trails.',
+      title: 'Strataflow Systems – Workflow Automation & AI Implementation (UK)',
+      description: 'Workflow automation and AI implementation for UK operations teams. Build faster processes with audit-ready evidence trails.',
       path: '/',
     },
     services: {
       title: 'Workflow Automation Services UK | Strataflow Systems',
-      description: 'Microsoft 365 workflow automation, SharePoint workflows, Power Automate consultancy, governance, and geospatial automation services.',
+      description: 'Workflow automation, AI implementation, governance, and geospatial automation services for operations teams.',
       path: '/services',
     },
 
     m365Automation: {
-      title: 'Microsoft 365 Workflow Automation Services – Strataflow UK',
-      description: 'Automate approvals and document control with Microsoft 365 workflow automation services built for compliance and speed.',
+      title: 'Business Workflow Automation Services – Strataflow UK',
+      description: 'Automate approvals and document control with workflow automation services built for compliance and speed.',
       path: '/services/microsoft-365-workflow-automation',
     },
     powerAutomateConsultancy: {
       title: 'Power Automate Consultancy UK – Workflow Automation Experts',
-      description: 'Power Automate consulting services for secure, scalable low-code process automation across Microsoft 365.',
+      description: 'Power Automate consulting services for secure, scalable low-code process automation across your operations stack.',
       path: '/services/power-automate-consultancy',
     },
     sharepointWorkflowAutomation: {
-      title: 'SharePoint Workflow Automation – Document Control & Approvals',
-      description: 'Automate SharePoint approvals, forms, and document workflows with built-in governance and audit history.',
+      title: 'Document Workflow Automation – Control & Approvals',
+      description: 'Automate approvals, forms, and document workflows with built-in governance and audit history.',
       path: '/services/sharepoint-workflow-automation',
     },
     powerPlatformGovernance: {
-      title: 'Power Platform Governance & CoE – Controlled Automation',
+      title: 'Automation Governance & CoE – Controlled Delivery',
       description: 'Power Platform governance services to scale Power Apps and Power Automate safely with policy controls and reporting.',
       path: '/services/power-platform-governance',
     },
     geospatialFieldOps: {
       title: 'Geospatial Workflow Automation – Location Intelligence Solutions',
-      description: 'Combine GIS and Microsoft 365 workflows for smarter field operations and location-based evidence capture.',
+      description: 'Combine GIS and workflow automation for smarter field operations and location-based evidence capture.',
       path: '/services/geospatial-field-ops-workflows',
     },
     caseStudies: {
       title: 'Case Studies | Strataflow Systems',
-      description: 'Anonymized operational case studies showing conservative outcomes from M365 modernization.',
+      description: 'Anonymized operational case studies showing conservative outcomes from automation modernization.',
       path: '/case-studies',
     },
     about: {
       title: 'About | Strataflow Systems',
-      description: 'Learn how Strataflow Systems brings an evidence-led, M365-native operating model to operational teams.',
+      description: 'Learn how Strataflow Systems brings an evidence-led automation and AI implementation model to operational teams.',
       path: '/about',
     },
     contact: {
       title: 'Contact | Strataflow Systems',
-      description: 'Book a discovery call and discuss your workflow automation and audit-readiness goals.',
+      description: 'Book a discovery call and discuss your workflow automation, AI implementation, and audit-readiness goals.',
       path: '/contact',
     },
     aiConsultancySession: {
