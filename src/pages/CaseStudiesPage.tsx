@@ -13,7 +13,9 @@ export const CaseStudiesPage = () => (
             <p className="text-sm text-slate-500 dark:text-slate-500">{study.clientType}</p>
             <h2 className="mt-2 text-2xl font-semibold text-slate-900 dark:text-slate-100">{study.title}</h2>
             <p className="mt-4 text-slate-600 dark:text-slate-400"><span className="font-medium text-slate-800">Challenge:</span> {study.challenge}</p>
-            <p className="mt-2 text-slate-600 dark:text-slate-400"><span className="font-medium text-slate-800">Approach:</span> {study.approach}</p>
+            <p className="mt-2 text-slate-600 dark:text-slate-400"><span className="font-medium text-slate-800">Workflow change:</span> {study.approach}</p>
+            <p className="mt-2 text-slate-600 dark:text-slate-400"><span className="font-medium text-slate-800">Evidence and control improvement:</span> {study.evidenceImprovement}</p>
+            <p className="mt-2 text-slate-600 dark:text-slate-400"><span className="font-medium text-slate-800">Outcome:</span> {study.outcomeSummary}</p>
             <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-600 dark:text-slate-400">
               {study.outcomes.map((o) => <li key={o}>{o}</li>)}
             </ul>
