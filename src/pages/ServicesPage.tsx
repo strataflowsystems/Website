@@ -41,7 +41,7 @@ export const ServicesPage = () => (
     <Seo {...seo.pages.services} />
     <StructuredData data={serviceListSchema} />
 
-    <Section title="Workflow automation service packages" headingLevel={1} intro="Structured for measurable outcomes, clear governance, and executive-ready reporting.">
+    <Section title="Automation and AI implementation service packages" headingLevel={1} intro="Structured for measurable outcomes, clear governance, and executive-ready reporting.">
       <div className="grid gap-4 lg:grid-cols-3">
         {site.services.map((service) => (
           <article key={service.name} className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
@@ -66,7 +66,7 @@ export const ServicesPage = () => (
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
           <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Microsoft 365 workflow automation</h3>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Automate approvals, forms, and operational records in Microsoft 365.</p>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Automate approvals, forms, and operational records across your core systems.</p>
           <Button href="/services/microsoft-365-workflow-automation" variant="secondary" className="mt-4 w-full">View details</Button>
         </article>
         <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
@@ -86,7 +86,7 @@ export const ServicesPage = () => (
         </article>
         <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-card dark:border-slate-800 dark:bg-slate-900">
           <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Geospatial workflow automation</h3>
-          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Embed location intelligence into M365 workflows for field operations.</p>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">Embed location intelligence into automation workflows for field operations.</p>
           <Button href="/services/geospatial-field-ops-workflows" variant="secondary" className="mt-4 w-full">View details</Button>
         </article>
       </div>
