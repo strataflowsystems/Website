@@ -24,6 +24,7 @@ export const site = {
     subheading:
       'Strataflow delivers spatially-aware SharePoint and Power Automate solutions with evidence trails built in-so delivery speed, compliance, and governance improve together.',
     proof: 'Trusted by operations-heavy teams in infrastructure, logistics, and regulated services. Typical outcomes include 20–30% faster cycle times.',
+    highlights: ['20–30% faster cycle times', 'Up to 40% fewer missing approvals', 'Audit prep reduced from days to hours'],
   },
   problem: [
     'Critical operational work is scattered across email, chats, spreadsheets, and disconnected trackers.',

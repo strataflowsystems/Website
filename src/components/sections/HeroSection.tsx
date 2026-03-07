@@ -26,6 +26,12 @@ export const HeroSection = () => (
             {site.secondaryCtas[1].label}
             <ArrowRight size={14} />
           </a>
+
+          <div className="mt-6 grid gap-2 text-sm sm:grid-cols-3">
+            {site.hero.highlights.map((item) => (
+              <div key={item} className="rounded-lg border border-slate-200 bg-white/70 px-3 py-2 text-slate-700 dark:border-slate-800 dark:bg-slate-900/70 dark:text-slate-300">{item}</div>
+            ))}
+          </div>
         </Reveal>
       </div>
       <Reveal delay={0.15}>
