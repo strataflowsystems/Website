@@ -23,14 +23,14 @@ export const Header = () => {
         </NavLink>
 
         <button
-          className="rounded-md p-2 text-slate-700 dark:text-slate-300 md:hidden"
+          className="rounded-md p-2 text-slate-700 dark:text-slate-300 xl:hidden"
           onClick={() => setOpen((value) => !value)}
           aria-label="Toggle navigation"
         >
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>
 
-        <nav className="hidden flex-nowrap items-center gap-5 md:flex">
+        <nav className="hidden flex-nowrap items-center gap-5 xl:flex">
           {site.nav.map((item) => (
             <NavLink
               key={item.href}
@@ -77,7 +77,7 @@ export const Header = () => {
       </div>
 
       {open && (
-        <nav className="border-t border-slate-200 bg-white px-6 py-4 dark:border-slate-800 dark:bg-slate-900 md:hidden">
+        <nav className="border-t border-slate-200 bg-white px-6 py-4 dark:border-slate-800 dark:bg-slate-900 xl:hidden">
           <div className="flex flex-col gap-4">
             {site.nav.map((item) => (
               <NavLink key={item.href} to={item.href} className="text-slate-700 dark:text-slate-300" onClick={() => setOpen(false)}>
