@@ -16,7 +16,7 @@ export const AboutPage = () => (
           <ul className="mt-3 list-disc space-y-1 pl-5 text-slate-600 dark:text-slate-400">
             <li>Design for operators first, then optimize for oversight.</li>
             <li>Evidence capture should be native to execution, not an afterthought.</li>
-            <li>Keep architecture pragmatic, secure, and aligned to Microsoft 365 standards.</li>
+            <li>Keep architecture pragmatic, secure, and aligned to your operational stack and standards.</li>
           </ul>
         </div>
         <div>
@@ -25,7 +25,7 @@ export const AboutPage = () => (
         </div>
         <div>
           <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-100">Why Strataflow</h2>
-          <p className="mt-3 text-slate-600 dark:text-slate-400">Strataflow brings an M365-native implementation approach and an evidence ledger mindset that makes delivery and audit-readiness reinforce each other.</p>
+          <p className="mt-3 text-slate-600 dark:text-slate-400">Strataflow brings an automation + AI implementation approach and an evidence ledger mindset that makes delivery and audit-readiness reinforce each other.</p>
         </div>
       </div>
     </Section>
